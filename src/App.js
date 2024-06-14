@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import LoginOthers from "./components/Authentication/LoginOthers";
 function App(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [login, setLogin] = useState(false);

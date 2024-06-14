@@ -68,9 +68,9 @@ export default function LoanEntForm() {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    return `${year}-${month}-${day}T${hours}:${minutes}:00`;
+    // const hours = String(date.getHours()).padStart(2, "0");
+    // const minutes = String(date.getMinutes()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   };
 
   // Handler for changing the date in the time picker
@@ -139,7 +139,13 @@ export default function LoanEntForm() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
-                    <select onChange={(e) => {}}>
+                    <select
+                      onChange={(e) => {
+                        console.log(e.target.value);
+                        setEmployeeId(e.target.value);
+                      }}
+                      style={{ height: "50px" }}>
+                      <option>select...</option>
                       {employee
                         .filter(
                           (e) =>
@@ -152,7 +158,8 @@ export default function LoanEntForm() {
                   </FormControl>
                   <FormControl fullWidth>
                     {console.log("employeeid", pnEmployeeId)}
-                    <select>
+                    <select style={{ height: "50px" }}>
+                      <option>select...</option>
                       {employee
                         .filter((e) => e.pnEmployeeId == pnEmployeeId)
                         .map((e) => (
@@ -161,6 +168,332 @@ export default function LoanEntForm() {
                     </select>
                   </FormControl>
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    {console.log("employeeid", pnEmployeeId)}
+                    <select
+                      style={{ height: "50px" }}
+                      onChange={(e) => setEmployeeName(e.target.value)}>
+                      <option>select...</option>
+                      {employee
+                        .filter((e) => e.pnEmployeeId == pnEmployeeId)
+                        .map((e) => (
+                          <option>{e.employeeFullName}</option>
+                        ))}
+                    </select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="loanAutoId"
+                      label="loanAutoId"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setLoanAutoId(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <InputLabel shrink>LoanId</InputLabel>
+                    <select
+                      name="fnLoanId"
+                      onChange={(e) => {
+                        setPnLoanId(e.target.value);
+                      }}
+                      style={{ height: "50px" }}>
+                      <option value="">Select</option>
+                      {paymLoan.map((e) => (
+                        <option>{e.pnLoanId}</option>
+                      ))}
+                    </select>
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <InputLabel shrink>loan Name</InputLabel>
+                    <select
+                      name="loanName"
+                      onChange={(e) => {
+                        setVLoanName(e.target.value);
+                      }}
+                      style={{ height: "50px" }}
+                      inputlabelprops={{ shrink: true }}>
+                      <option value="">Select</option>
+                      {paymLoan
+                        .filter((e) => e.pnLoanId == pnLoanId)
+                        .map((e) => (
+                          <option>{e.vLoanName}</option>
+                        ))}
+                    </select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="San Date"
+                      type="date"
+                      fullWidth
+                      required
+                      value={sanDate}
+                      onChange={(e) =>
+                        handleDateChange(new Date(e.target.value), setSanDate)
+                      }
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Effective Date"
+                      type="date"
+                      fullWidth
+                      required
+                      value={dEffdate}
+                      onChange={(e) =>
+                        handleDateChange(new Date(e.target.value), setDeffDate)
+                      }
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="loanAmt"
+                      label="loanAmt"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setLoanAmt(e.target.value)}
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="instalmentAmt"
+                      label="instalmentAmt"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setInstalmentAmt(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="instalmentcount"
+                      label="instalmentcount"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setInstalmentCount(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="balanceAmt"
+                      label="balanceAmt"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setBalanceAmt(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="cStatus"
+                      label="cStatus"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setCstatus(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="loanProcess"
+                      label="loanProcess"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setLoanProcess(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="loanCalculation"
+                      label="loanCalculation"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setLoanCalculation(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="comments"
+                      label="comments"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setComments(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="loanAppid"
+                      label="loanAppid"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setLoanAppId(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="interest"
+                      label="interest"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setInterest(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="totInterestAmt"
+                      label="totInterestAmt"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setTotInterestAmt(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="loanStatus"
+                      label="loanStatus"
+                      variant="outlined"
+                      fullWidth
+                      required
+                      onChange={(e) => setLoanStatus(e.target.value)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Last Transaction From"
+                      type="date"
+                      //  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+                      fullWidth
+                      required
+                      onChange={(e) => {
+                        console.log(e.target.value);
+                        setLastTransactionFrom(e.target.value);
+                      }}
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </FormControl>
+                </Grid>{" "}
+                <Grid xs={12} sm={6} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      name="lasttransactionTo"
+                      label="lasttransactionTo"
+                      variant="outlined"
+                      type="date"
+                      fullWidth
+                      required
+                      onChange={(e) => setLastTransactionTo(e.target.value)}
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </FormControl>
+                </Grid>
+              </Grid>
+              <Grid>
+                <Button
+                  onClick={() => {
+                    const formData = {
+                      pnCompanyId: company,
+                      pnBranchId: branch,
+                      pnEmployeeId: pnEmployeeId,
+                      empcode: employeeCode,
+                      empName: employeeName,
+                      loanAutoId: "223AAA33434",
+                      fnLoanId: pnLoanId,
+
+                      sanDate: sanDate,
+                      dEffdate: dEffdate,
+                      loanAmt: loanAmt,
+                      instalmentAmt: instalmentAmt,
+                      instalmentcount: instalmentcount,
+                      balanceAmt: balanceAmt,
+                      cStatus: cStatus,
+                      loanName: vLoanName,
+                      loanProcess: loanProcess,
+                      loanCalculation: loanCalculation,
+                      comments: comments,
+                      loanAppid: loanAppid,
+                      interest: interest,
+                      totInterestAmt: totInterestAmt,
+                      loanStatus: loanStatus,
+                      lasttransactionFrom: lasttransactionFrom,
+                      lasttransactionTo: lasttransactionTo,
+
+                      PaymLoan: {
+                        PnCompany: {
+                          pnCompanyId: company,
+                        },
+                      },
+                      PaymBranch: {
+                        PnBranch: {
+                          pnBranchId: branch,
+                        },
+                        PnCompany: {
+                          pnCompanyId: company,
+                        },
+                      },
+                    };
+                    console.log(formData);
+                    let query1 = `insert into loanentry values(${formData.pnCompanyId},${formData.pnBranchId},${formData.pnEmployeeId},'${formData.loanAutoId}',${formData.fnLoanId},'${sanDate}','${dEffdate}',${loanAmt},${instalmentAmt},${instalmentcount},${balanceAmt},'${cStatus}','${vLoanName}','${loanProcess}','${loanCalculation}','${comments}','${loanAppid}',${interest},${totInterestAmt},'${employeeName}','${loanStatus}','${lasttransactionFrom}','${lasttransactionTo}')`;
+                    postRequest(ServerConfig.url, SAVE, {
+                      query: query1,
+                    })
+                      .then((e) => alert("date inserted successfully"))
+                      .catch((e) =>
+                        alert(
+                          "Either fields are empty or invalid or there is an issue with network connectivity"
+                        )
+                      );
+                  }}>
+                  Save
+                </Button>
               </Grid>
             </form>
           </CardContent>

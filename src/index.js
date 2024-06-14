@@ -164,6 +164,7 @@ import { Provider } from "react-redux";
 import entityReducer from "./reduxcomp/actions/reducer/entityreducer";
 import AttendanceNew from "./components/Attendance/Attendance";
 import OtHrsNewForm from "./components/OtHrsNew/OtHrsNewForm";
+import LoginOthers from "./components/Authentication/LoginOthers";
 const store = createStore(entityReducer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -177,6 +178,7 @@ root.render(
 
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="/loginemployee" element={<LoginOthers />} />
           <Route path="/layout" element={<Layoutcomp />} />
           <Route path="/home" element={<ServiceCard />}></Route>
           <Route path="/AssetsTable" element={<AssetsTable />}></Route>

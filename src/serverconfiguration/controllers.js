@@ -71,3 +71,4 @@ export const TIMECARD = "Timecards";
 export const REPORTS = "Reports";
 export const SAVE = "SaveBlob";
 export const UPDATEDTIMECARD = "UpdatedTimecard/UpdatedTimecard";
+export const EMPLOYEELOGIN = "EmployeeLogin";

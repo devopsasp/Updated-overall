@@ -13,14 +13,17 @@ import { useContext } from "react";
 import { ServerConfig } from "../../serverconfiguration/serverconfig";
 
 import { postRequest, getRequest } from "../../serverconfiguration/requestcomp";
-import { BRANCHLOGIN } from "../../serverconfiguration/controllers";
+import {
+  EMPLOYEELOGIN,
+  PAYMEMPLOYEE,
+} from "../../serverconfiguration/controllers";
 import { useNavigate } from "react-router-dom";
 import { PAYMBRANCHES } from "../../serverconfiguration/controllers";
 import { connect } from "react-redux";
 
 import { setUser } from "../../reduxcomp/actions/actionfunctions";
 import { encryptData } from "./encryption";
-function LoginOthers(props) {
+function LoginForm(props) {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +47,7 @@ function LoginOthers(props) {
     console.log("Username:", username);
     console.log("Password:", password);
 
-    postRequest(ServerConfig.url, BRANCHLOGIN, { username, password })
+    postRequest(ServerConfig.url, EMPLOYEELOGIN, { username, password })
       .then((e) => {
         console.log(e);
         sessionStorage.setItem("jwt", e.data.message);
@@ -54,23 +57,16 @@ function LoginOthers(props) {
 
         navigate("/layout");
         setError("");
-        getRequest(ServerConfig.url, PAYMBRANCHES).then((e) => {
-          var branchdet = e.data.filter((s) => s.branchUserId == username);
+        getRequest(ServerConfig.url, PAYMEMPLOYEE).then((e) => {
+          var branchdet = e.data.filter((s) => s.employeeCode == username);
           console.log(branchdet);
-          props.dispatch(
-            setUser({
-              branch: branchdet[0].pnBranchId,
-              company: branchdet[0].pnCompanyId,
-            })
-          );
-          sessionStorage.setItem(
-            "branch",
-            encryptData(branchdet[0].pnBranchId)
-          );
-          sessionStorage.setItem(
-            "company",
-            encryptData(branchdet[0].pnCompanyId)
-          );
+          // props.dispatchx(
+          //   setUser({
+          //     branch: branchdet[0].pnEmployeeId,
+          //     company: branchdet[0].,
+          //   })
+          // );
+          sessionStorage.setItem("employee", encryptData(branchdet));
         });
       })
       .catch(() => {
@@ -147,4 +143,4 @@ function LoginOthers(props) {
 }
 const mapStateToProps = (state) => ({ state: state });
 const mapDispatchToProps = (dispatch) => ({ dispatch: dispatch });
-export default connect(mapStateToProps, mapDispatchToProps)(LoginOthers);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
