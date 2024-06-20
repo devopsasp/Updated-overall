@@ -20,12 +20,16 @@ import { connect } from "react-redux";
 
 import { setUser } from "../../reduxcomp/actions/actionfunctions";
 import { encryptData } from "./encryption";
+import {
+  EMPLOYEELOGIN,
+  PAYMEMPLOYEE,
+} from "../../serverconfiguration/controllers";
 function LoginOthers(props) {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const [loginType, setLoginType] = useState("select");
   //const [loggedIn,isLoggedIn]=useState(false)
   const changeState = (status) => {
     props.isLoggedIn(status);
@@ -39,43 +43,75 @@ function LoginOthers(props) {
   };
 
   const handleSubmit = (event) => {
+    console.log(loginType);
     event.preventDefault();
-
     console.log("Username:", username);
     console.log("Password:", password);
+    if (loginType == "Branch") {
+      postRequest(ServerConfig.url, BRANCHLOGIN, { username, password })
+        .then((e) => {
+          console.log(e);
 
-    postRequest(ServerConfig.url, BRANCHLOGIN, { username, password })
-      .then((e) => {
-        console.log(e);
-        sessionStorage.setItem("jwt", e.data.message);
+          sessionStorage.setItem("jwt", e.data.message);
 
-        changeState(true);
-        sessionStorage.setItem("user", username);
+          changeState(true);
+          sessionStorage.setItem("user", username);
 
-        navigate("/layout");
-        setError("");
-        getRequest(ServerConfig.url, PAYMBRANCHES).then((e) => {
-          var branchdet = e.data.filter((s) => s.branchUserId == username);
-          console.log(branchdet);
-          props.dispatch(
-            setUser({
-              branch: branchdet[0].pnBranchId,
-              company: branchdet[0].pnCompanyId,
-            })
-          );
-          sessionStorage.setItem(
-            "branch",
-            encryptData(branchdet[0].pnBranchId)
-          );
-          sessionStorage.setItem(
-            "company",
-            encryptData(branchdet[0].pnCompanyId)
-          );
+          navigate("/layout");
+          setError("");
+          getRequest(ServerConfig.url, PAYMBRANCHES).then((e) => {
+            var branchdet = e.data.filter((s) => s.branchUserId == username);
+            console.log(branchdet);
+            props.dispatch(
+              setUser({
+                branch: branchdet[0].pnBranchId,
+                company: branchdet[0].pnCompanyId,
+              })
+            );
+            sessionStorage.setItem(
+              "branch",
+              encryptData(branchdet[0].pnBranchId)
+            );
+            sessionStorage.setItem(
+              "company",
+              encryptData(branchdet[0].pnCompanyId)
+            );
+          });
+        })
+        .catch(() => {
+          setError("Invalid username or password");
         });
-      })
-      .catch(() => {
-        setError("Invalid username or password");
-      });
+    } else {
+      console.log("employee");
+      postRequest(ServerConfig.url, EMPLOYEELOGIN, { username, password })
+        .then((e) => {
+          console.log(e);
+          sessionStorage.setItem("jwt", e.data.message);
+
+          changeState(true);
+          sessionStorage.setItem("user", username);
+
+          setError("");
+          getRequest(ServerConfig.url, PAYMEMPLOYEE).then((e) => {
+            var branchdet = e.data.filter((s) => s.employeeCode == username);
+            if (branchdet[0].role == 1) {
+              navigate("/dashboared");
+            } else if (branchdet[0].role == 4) {
+              navigate("/employeedashboared");
+            }
+            // props.dispatchx(
+            //   setUser({
+            //     branch: branchdet[0].pnEmployeeId,
+            //     company: branchdet[0].,
+            //   })
+            // );
+            sessionStorage.setItem("employee", encryptData(branchdet));
+          });
+        })
+        .catch(() => {
+          setError("Invalid username or password");
+        });
+    }
   };
 
   return (
@@ -126,6 +162,24 @@ function LoginOthers(props) {
                 onChange={handlePasswordChange}
                 sx={{ backgroundColor: "#f9f9f9" }}
               />
+            </Grid>
+            <Grid item xs={12}>
+              {/* <TextField
+                fullWidth
+                label="Password"
+                variant="outlined"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                sx={{ backgroundColor: "#f9f9f9" }}
+              /> */}
+              <select
+                style={{ height: "50px", width: "390px" }}
+                onChange={(e) => setLoginType(e.target.value)}>
+                <option>Select Login Type</option>
+                <option>Branch</option>
+                <option>Employee</option>
+              </select>
             </Grid>
           </Grid>
           <Button

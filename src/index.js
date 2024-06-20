@@ -165,6 +165,10 @@ import entityReducer from "./reduxcomp/actions/reducer/entityreducer";
 import AttendanceNew from "./components/Attendance/Attendance";
 import OtHrsNewForm from "./components/OtHrsNew/OtHrsNewForm";
 import LoginOthers from "./components/Authentication/LoginOthers";
+import DashBoard from "./components/dashboredsss/DashBoard";
+import EmployeeDashBoard from "./components/Nattendance/EmployeeDashBoard";
+import BasicDateCalendar from "./components/Nattendance/Nattendance";
+import Chatbot from "./components/Chatbot/chatbot";
 const store = createStore(entityReducer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -183,14 +187,17 @@ root.render(
           <Route path="/home" element={<ServiceCard />}></Route>
           <Route path="/AssetsTable" element={<AssetsTable />}></Route>
           <Route path="/SampleForm" element={<SampleForm />}></Route>
-
+          <Route path="/dashboared" element={<DashBoard />}></Route>
+          <Route
+            path="/employeedashboared"
+            element={<BasicDateCalendar />}></Route>
           <Route
             path="/dailytimecardtable"
             element={<DailyTimeCardTables />}></Route>
+          <Route path="/Chatbot" element={<Chatbot />}></Route>
           <Route
             path="/dailytimecardform"
             element={<DailyTimeCardForm />}></Route>
-
           <Route path="/AttendenceTable" element={<AttendenceTable />}></Route>
           <Route path="/AttendenceForm" element={<AttendenceForm />}></Route>
           <Route path="/Attendance" element={<AttendanceNew />}></Route>

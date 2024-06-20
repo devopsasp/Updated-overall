@@ -192,7 +192,7 @@ export default function Sample13() {
                   </FormControl>
                 </Grid>
 
-                <Grid xs={12} sm={6} item>
+                {/* <Grid xs={12} sm={6} item>
                   <FormControl fullWidth>
                     <InputLabel shrink>shiftCode</InputLabel>
                     <TextField
@@ -203,7 +203,7 @@ export default function Sample13() {
                       required
                     />
                   </FormControl>
-                </Grid>
+                </Grid> */}
 
                 <Grid xs={12} sm={6} item>
                   <FormControl fullWidth>
