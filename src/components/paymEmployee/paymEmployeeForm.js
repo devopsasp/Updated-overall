@@ -350,7 +350,6 @@ export default function PaymEmployeeForm() {
                       label="ctc"
                       variant="outlined"
                       fullWidth
-                      required
                       onChange={(e) => setCTC(e.target.value)}
                     />
                   </FormControl>
@@ -363,7 +362,6 @@ export default function PaymEmployeeForm() {
                       label="basicSalary"
                       variant="outlined"
                       fullWidth
-                      required
                       onChange={(e) => setbasic_salary(e.target.value)}
                     />
                   </FormControl>

@@ -87,9 +87,6 @@ const JsonTable = ({ jsonData, url }) => {
       },
       pnBranchId: row.pnBranchId,
     };
-    row.pnCompany = {
-      pnCompany: row.pnCompanyId,
-    };
     row.flag = "m";
     axios
       .put(url + "/" + row.pnCompanyId, row, {
@@ -106,7 +103,6 @@ const JsonTable = ({ jsonData, url }) => {
       })
       .catch((error) => {
         alert("Cannot perform this operation!");
-        console.log(error);
       });
   };
 
@@ -117,20 +113,11 @@ const JsonTable = ({ jsonData, url }) => {
     );
     if (confirmed) {
       axios
-        .delete(
-          url +
-            "/" +
-            row.pnCompanyId +
-            "/" +
-            row.pnBranchId +
-            "/" +
-            row.pnEmployeeId,
-          {
-            headers: {
-              "X-Special-Header": sessionStorage.getItem("jwt"),
-            },
-          }
-        )
+        .delete(url + "/" + row.pnCompanyId, {
+          headers: {
+            "X-Special-Header": sessionStorage.getItem("jwt"),
+          },
+        })
         .then(() => {
           alert("Deleted successfully");
           window.location.reload();
@@ -175,20 +162,17 @@ const JsonTable = ({ jsonData, url }) => {
               transition: "background-color 0.3s ease",
             }}>
             <option>select...</option>
-            {console.log("data", jsonData)}
-            {jsonData.length == 0 || jsonData == undefined
-              ? "No data available"
-              : Object.keys(jsonData[0]).map((header) => (
-                  <option>
-                    {header == "pnCompanyid" ||
-                    header == "pnBranchid" ||
-                    header == "empCode" ||
-                    header == "empName" ||
-                    header == "id"
-                      ? header
-                      : ""}
-                  </option>
-                ))}
+            {Object.keys(jsonData[0]).map((header) => (
+              <option>
+                {header == "pnCompanyid" ||
+                header == "pnBranchid" ||
+                header == "empCode" ||
+                header == "empName" ||
+                header == "id"
+                  ? header
+                  : ""}
+              </option>
+            ))}
           </select>
         </div>
         <div style={{ display: "inline", paddingTop: "22px" }}>
@@ -215,13 +199,11 @@ const JsonTable = ({ jsonData, url }) => {
         <Table size="xxlarge">
           <TableHead>
             <TableRow>
-              {jsonData.length == 0 || jsonData == undefined
-                ? "no data available"
-                : Object.keys(jsonData[0]).map((header) => (
-                    <StyledTableCell key={header}>
-                      {header.split(/paym|pn/)}
-                    </StyledTableCell>
-                  ))}
+              {Object.keys(jsonData[0]).map((header) => (
+                <StyledTableCell key={header}>
+                  {header.split(/paym|pn/)}
+                </StyledTableCell>
+              ))}
               <StyledTableCell>Edit</StyledTableCell>
               <StyledTableCell>Delete</StyledTableCell>
             </TableRow>

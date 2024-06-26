@@ -168,7 +168,12 @@ import LoginOthers from "./components/Authentication/LoginOthers";
 import DashBoard from "./components/dashboredsss/DashBoard";
 import EmployeeDashBoard from "./components/Nattendance/EmployeeDashBoard";
 import BasicDateCalendar from "./components/Nattendance/Nattendance";
+import GroupUi from "./components/Group UI/GroupUi";
 import Chatbot from "./components/Chatbot/chatbot";
+import AddInfos from "./components/Group UI/AddInfos";
+import PaympaybillTable from "./components/PaymPaybill/paympaybillTables";
+import PaymPaypfTable from "./components/PaymPf/paympfTable";
+import GroupShift from "./components/Group UI/GroupShift";
 const store = createStore(entityReducer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -206,7 +211,9 @@ root.render(
 
           <Route path="/Form7table" element={<Form7table />}></Route>
           <Route path="/SampleForm7" element={<SampleForm7 />}></Route>
-
+          <Route path="/groupui" element={<GroupUi />} />
+          <Route path="/groupui/addinfos" element={<AddInfos />} />
+          <Route path="/groupshift" element={<GroupShift />} />
           <Route
             path="/HrAuthenticationTable"
             element={<HrAuthenticationTable />}></Route>
@@ -422,13 +429,13 @@ root.render(
             element={<PaymOverHeadingcostTable />}></Route>
           <Route path="/Sample26" element={<Sample26 />}></Route>
 
-          <Route path="/PaympfTable" element={<PaympfTable />}></Route>
-          <Route path="/Sample25" element={<Sample25 />}></Route>
+          <Route path="/PaymPaypfTable" element={<PaymPaypfTable />}></Route>
+          <Route path="/Sample24" element={<Sample24 />}></Route>
 
           <Route
             path="/PaymPaybillTable"
-            element={<PaymPaybillTable />}></Route>
-          <Route path="/Sample24" element={<Sample24 />}></Route>
+            element={<PaympaybillTable />}></Route>
+          <Route path="/Sample25" element={<Sample25 />}></Route>
 
           <Route path="/PaymshiftTable" element={<PaymshiftTable />}></Route>
           <Route path="/Sample23" element={<Sample23 />}></Route>

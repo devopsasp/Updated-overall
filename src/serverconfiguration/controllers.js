@@ -74,3 +74,5 @@ export const UPDATEDTIMECARD = "UpdatedTimecard/UpdatedTimecard";
 export const EMPLOYEELOGIN = "EmployeeLogin";
 export const AGGREGATE = "Aggregate";
 export const NATTENDANCE = "Timecards";
+export const PAYOUTPUTESI = "PayOutputEsis";
+export const PAYMVPF = "PaymVpfs";

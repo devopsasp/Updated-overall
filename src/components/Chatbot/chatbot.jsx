@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLockBodyScroll } from "react-use";
+
 import {
   TextField,
   Button,
@@ -535,7 +537,7 @@ function Chatbot() {
     ]);
     scrollToBottom();
   };
-
+  useLockBodyScroll();
   return (
     <ThemeProvider theme={theme}>
       <Box
