@@ -89,12 +89,12 @@ const JsonTable = ({ jsonData, url }) => {
     };
     row.flag = "m";
     axios
-      .put(url + "/" + row.id, row)
+      .put(url + "/" + row.sno, row)
       .then((response) => {
         if (response.status === 204) {
           alert("Data Saved Successfully!");
           setEditable(-1);
-          window.location.href = "http://localhost:3000";
+          window.location.reload();
         }
       })
       .catch((error) => {

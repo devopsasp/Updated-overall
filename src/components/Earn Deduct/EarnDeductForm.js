@@ -33,49 +33,49 @@ export default function EarnDeductForm() {
   const [employeeCode, setEmployeeCode] = useState("");
   const [employeeName, setEmployeeName] = useState("");
   const [earnDeduct, setEarnDeduct] = useState([]);
-  const [allowance1, setAllowance1] = useState("");
-  const [value1, setValue1] = useState("");
-  const [allowance2, setAllowance2] = useState("");
-  const [value2, setValue2] = useState("");
-  const [allowance3, setAllowance3] = useState("");
-  const [value3, setValue3] = useState("");
-  const [allowance4, setAllowance4] = useState("");
-  const [value4, setValue4] = useState("");
-  const [allowance5, setAllowance5] = useState("");
-  const [value5, setValue5] = useState("");
-  const [allowance6, setAllowance6] = useState("");
-  const [value6, setValue6] = useState("");
-  const [allowance7, setAllowance7] = useState("");
-  const [value7, setValue7] = useState("");
-  const [allowance8, setAllowance8] = useState("");
-  const [value8, setValue8] = useState("");
-  const [allowance9, setAllowance9] = useState("");
-  const [value9, setValue9] = useState("");
-  const [allowance10, setAllowance10] = useState("");
-  const [value10, setValue10] = useState("");
-  const [deduction1, setDeduction1] = useState("");
-  const [valueA1, setValueA1] = useState("");
-  const [deduction2, setDeduction2] = useState("");
-  const [valueA2, setValueA2] = useState("");
-  const [deduction3, setDeduction3] = useState("");
-  const [valueA3, setValueA3] = useState("");
-  const [deduction4, setDeduction4] = useState("");
-  const [valueA4, setValueA4] = useState("");
-  const [deduction5, setDeduction5] = useState("");
-  const [valueA5, setValueA5] = useState("");
-  const [deduction6, setDeduction6] = useState("");
-  const [valueA6, setValueA6] = useState("");
-  const [deduction7, setDeduction7] = useState("");
-  const [valueA7, setValueA7] = useState("");
-  const [deduction8, setDeduction8] = useState("");
-  const [valueA8, setValueA8] = useState("");
-  const [deduction9, setDeduction9] = useState("");
-  const [valueA9, setValueA9] = useState("");
-  const [deduction10, setDeduction10] = useState("");
-  const [valueA10, setValueA10] = useState("");
+  const [allowance1, setAllowance1] = useState("a1");
+  const [value1, setValue1] = useState(0);
+  const [allowance2, setAllowance2] = useState("a2");
+  const [value2, setValue2] = useState(0);
+  const [allowance3, setAllowance3] = useState("a3");
+  const [value3, setValue3] = useState(0);
+  const [allowance4, setAllowance4] = useState("a4");
+  const [value4, setValue4] = useState(0);
+  const [allowance5, setAllowance5] = useState("a5");
+  const [value5, setValue5] = useState(0);
+  const [allowance6, setAllowance6] = useState("a6");
+  const [value6, setValue6] = useState(0);
+  const [allowance7, setAllowance7] = useState("a7");
+  const [value7, setValue7] = useState(0);
+  const [allowance8, setAllowance8] = useState("a8");
+  const [value8, setValue8] = useState(0);
+  const [allowance9, setAllowance9] = useState("a9");
+  const [value9, setValue9] = useState(0);
+  const [allowance10, setAllowance10] = useState("a10");
+  const [value10, setValue10] = useState(0);
+  const [deduction1, setDeduction1] = useState("a11");
+  const [valueA1, setValueA1] = useState(0);
+  const [deduction2, setDeduction2] = useState("a12");
+  const [valueA2, setValueA2] = useState(0);
+  const [deduction3, setDeduction3] = useState("a13");
+  const [valueA3, setValueA3] = useState(0);
+  const [deduction4, setDeduction4] = useState("a14");
+  const [valueA4, setValueA4] = useState(0);
+  const [deduction5, setDeduction5] = useState("a15");
+  const [valueA5, setValueA5] = useState(0);
+  const [deduction6, setDeduction6] = useState("a16");
+  const [valueA6, setValueA6] = useState(0);
+  const [deduction7, setDeduction7] = useState("a17");
+  const [valueA7, setValueA7] = useState(0);
+  const [deduction8, setDeduction8] = useState("a18");
+  const [valueA8, setValueA8] = useState(0);
+  const [deduction9, setDeduction9] = useState("a19");
+  const [valueA9, setValueA9] = useState(0);
+  const [deduction10, setDeduction10] = useState("a20");
+  const [valueA10, setValueA10] = useState(0);
   const [dDate, setDdate] = useState("");
-  const [dFromDate, setDFromDate] = useState("");
-  const [dToDate, setDToDate] = useState("");
+  const [dFromDate, setDFromDate] = useState(new Date());
+  const [dToDate, setDToDate] = useState(new Date());
 
   useEffect(() => {
     async function getData() {
@@ -285,7 +285,7 @@ export default function EarnDeductForm() {
                   </FormControl> */}
                 </Grid>
 
-                <Grid xs={12} sm={6} item>
+                {/* <Grid xs={12} sm={6} item>
                   <FormControl fullWidth>
                     <TextField
                       name="allowance1"
@@ -816,7 +816,7 @@ export default function EarnDeductForm() {
                       onChange={(e) => setValueA10(e.target.value)}
                     />
                   </FormControl>
-                </Grid>
+                </Grid> */}
 
                 <Grid xs={12} sm={6} item>
                   <FormControl fullWidth>
@@ -833,7 +833,7 @@ export default function EarnDeductForm() {
                   </FormControl>
                 </Grid>
 
-                <Grid xs={12} sm={6} item>
+                {/* <Grid xs={12} sm={6} item>
                   <FormControl fullWidth>
                     <TextField
                       name="dFromDate"
@@ -846,9 +846,9 @@ export default function EarnDeductForm() {
                       InputLabelProps={{ shrink: true }}
                     />
                   </FormControl>
-                </Grid>
+                </Grid> */}
 
-                <Grid xs={12} sm={6} item>
+                {/* <Grid xs={12} sm={6} item>
                   <FormControl fullWidth>
                     <TextField
                       name="dToDate"
@@ -861,7 +861,7 @@ export default function EarnDeductForm() {
                       InputLabelProps={{ shrink: true }}
                     />
                   </FormControl>
-                </Grid>
+                </Grid> */}
               </Grid>
               <Grid container spacing={1} paddingTop={"10px"}>
                 <Grid item xs={12} align="right">
@@ -930,15 +930,16 @@ export default function EarnDeductForm() {
                           console.log(e);
                           navigate("/EarnDeductTable");
                         })
-                        .catch((e) =>
+                        .catch((e) => {
                           alert(
                             "either fields are empty or values are invalid ,or you have a network issue!"
-                          )
-                        );
+                          );
+                          console.log(e);
+                        });
                     }}
                     variant="contained"
                     color="primary">
-                    SAVE
+                    Allow for Earnings and Deductions
                   </Button>
                 </Grid>
               </Grid>

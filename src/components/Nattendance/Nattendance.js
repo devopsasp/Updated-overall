@@ -16,7 +16,7 @@ import { ServerConfig } from "../../serverconfiguration/serverconfig";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { postRequest } from "../../serverconfiguration/requestcomp";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-
+import { TIMECARD } from "../../serverconfiguration/controllers";
 export default function BasicDateCalendar() {
   const [selectedDate, setSelectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState("");
@@ -33,8 +33,10 @@ export default function BasicDateCalendar() {
     var obj = {
       pnCompanyid: 1,
       pnBranchid: 1,
-      pnEmployeeid: 2,
-      status: "Present",
+      empCode: sessionStorage.getItem("user"),
+      shiftCode: null,
+      status: "P",
+      dates: new Date(),
       intime:
         dt.getFullYear() +
         "-" +
@@ -50,6 +52,7 @@ export default function BasicDateCalendar() {
         "." +
         "000", //dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDay()+"T"+dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds()+"."+"000",
       outtime: "2024-04-23T18:00:46.867",
+      pnEmployeeId: sessionStorage.getItem("user"),
     };
     console.log(obj);
     console.log(
@@ -67,7 +70,7 @@ export default function BasicDateCalendar() {
         "." +
         "000"
     );
-    postRequest(ServerConfig.url, NATTENDANCE, obj)
+    postRequest(ServerConfig.url, TIMECARD, obj)
       .then((e) => {
         // console.log(e.data)
       })

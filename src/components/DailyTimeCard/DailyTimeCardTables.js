@@ -8,6 +8,7 @@ import { Button, Grid } from "@mui/material";
 import {
   DAILYTIMECARD,
   EARNDEDUCT,
+  TIMECARD,
 } from "../../serverconfiguration/controllers";
 import { useNavigate } from "react-router-dom";
 import JsonTable from "./jsoncomp";
@@ -33,7 +34,7 @@ const DailyTimeCardTables = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([{}]);
   useEffect(() => {
-    getRequest(ServerConfig.url, DAILYTIMECARD)
+    getRequest(ServerConfig.url, TIMECARD)
       .then((e) => {
         setData(e.data);
       })
@@ -59,7 +60,7 @@ const DailyTimeCardTables = () => {
         </Button>
       </div>
       <div>
-        <JsonTable jsonData={data} url={ServerConfig.url + DAILYTIMECARD} />
+        <JsonTable jsonData={data} url={ServerConfig.url + TIMECARD} />
         <Grid margin={5}></Grid>
       </div>
     </div>

@@ -148,7 +148,7 @@ function AddInfos() {
         processedGroupIds.add(group.groupid);
 
         const query1 = `INSERT INTO paym_paybill (EmployeeCode, Earn_Amount, Ded_Amount, Act_Basic, Net_salary, Gross_salary, NetPay, Earned_Basic, max_amount, pn_CompanyID, pn_BranchID, pn_EmployeeID, Allowance1, value1, Allowance2, value2, Allowance3, value3, Allowance4, value4, Allowance5, value5, Allowance6, value6, Allowance7, value7, Allowance8, value8, Allowance9, value9, Allowance10, value10, Deduction1, valueA1, Deduction2, valueA2, Deduction3, valueA3, Deduction4, valueA4, Deduction5, valueA5, Deduction6, valueA6, Deduction7, valueA7, Deduction8, valueA8, Deduction9, valueA9, Deduction10, valueA10, Employee_First_Name, CompanyName, DesignationName, DepartmentName, GradeName, CategoryName, JoiningDate, d_date, EPF, FPF, period_code, ot_hrs, ot_value, ot_amt, Address_line1, Address_Line2, City, Zipcode)
-          SELECT eg.employee_code, gs.Earned_Amount, gs.Ded_Amount, gs.Basic_salary, gs.Net_salary, gs.Gross_salary, gs.NetPay, gs.Earned_Basic, gs.max_amount, pe.pn_CompanyID, pe.pn_BranchID, pe.pn_EmployeeID, gs.Allowance1, gs.Value1, gs.Allowance2, gs.value2, gs.Allowance3, gs.value3, gs.Allowance4, gs.Value4, gs.Allowance5, gs.Value5, gs.Allowance6, gs.Value6, gs.Allowance7, gs.value7, gs.Allowance8, gs.Value8, gs.Allowance9, gs.Value9, gs.Allowance10, gs.Value10, gs.Deduction1, gs.valueA1, gs.Deduction2, gs.valueA2, gs.Deduction3, gs.valueA3, gs.Deduction4, gs.valueA4, gs.Deduction5, gs.valueA5, gs.Deduction6, gs.valueA6, gs.Deduction7, gs.valueA7, gs.Deduction8, gs.valueA8, gs.Deduction9, gs.valueA9, gs.Deduction10, gs.valueA10, pe.Employee_First_Name, pc.CompanyName, pd.v_DesignationName, pde.v_DepartmentName, pg.v_GradeName, pca.v_CategoryName, pew.JoiningDate, ed.d_date, gs.emp_EPF, gs.emp_FPF, ped.period_code, tc.ot_hrs, pin.ot_value, pin.ot_Amt, pbr.Address_Line1, pbr.Address_Line2, pbr.City, pbr.ZipCode
+          SELECT eg.employee_code, gs.Earned_Amount, gs.Ded_Amount, gs.Basic_salary, gs.Net_salary, gs.Gross_salary, gs.NetPay, gs.Earned_Basic, gs.max_amount, pe.pn_CompanyID, pe.pn_BranchID, pe.pn_EmployeeID, gs.Allowance1, gs.Value1, gs.Allowance2, gs.value2, gs.Allowance3, gs.value3, gs.Allowance4, gs.Value4, gs.Allowance5, gs.Value5, gs.Allowance6, gs.Value6, gs.Allowance7, gs.value7, gs.Allowance8, gs.Value8, gs.Allowance9, gs.Value9, gs.Allowance10, gs.Value10, gs.Deduction1, gs.valueA1, gs.Deduction2, gs.valueA2, gs.Deduction3, gs.valueA3, gs.Deduction4, gs.valueA4, gs.Deduction5, gs.valueA5, gs.Deduction6, gs.valueA6, gs.Deduction7, gs.valueA7, gs.Deduction8, gs.valueA8, gs.Deduction9, gs.valueA9, gs.Deduction10, gs.valueA10, pe.Employee_First_Name, pc.CompanyName, pd.v_DesignationName, pde.v_DepartmentName, pg.v_GradeName, pca.v_CategoryName, pew.JoiningDate, ed.d_date, gs.emp_EPF, gs.emp_FPF, null, tc.ot_hrs, pin.ot_value, pin.ot_Amt, pbr.Address_Line1, pbr.Address_Line2, pbr.City, pbr.ZipCode
           FROM Group_Settings gs 
           JOIN Employee_Group eg ON gs.groupid = eg.groupid 
           JOIN paym_Employee pe ON eg.employee_code = pe.EmployeeCode 
@@ -160,9 +160,8 @@ function AddInfos() {
           JOIN paym_Category pca on pe.pn_CompanyID = pca.pn_CompanyID and pe.pn_BranchID = pca.BranchID and pep.pn_CategoryId = pca.pn_CategoryID
           JOIN paym_Employee_WorkDetails pew on pe.pn_EmployeeID = pew.pn_EmployeeID 
           JOIN earn_deduct ed on pe.pn_EmployeeID = ed.pn_EmployeeID 
-          JOIN paym_Emp_Deduction ped on pe.pn_EmployeeID =ped.pn_EmployeeID 
           JOIN time_card tc on pe.EmployeeCode = tc.emp_code 
-          JOIN PayInput pin on pe.pn_EmployeeID = pin.pn_EmployeeID 
+      JOIN PayInput pin on pe.pn_EmployeeID = pin.pn_EmployeeID 
           JOIN paym_Branch pbr on pe.pn_CompanyID = pbr.pn_CompanyID and pe.pn_BranchID = pbr.pn_BranchID and pep.pn_BranchID = pbr.pn_BranchID
           WHERE gs.groupid = ${group.groupid};`;
 

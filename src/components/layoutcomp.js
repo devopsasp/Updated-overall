@@ -105,11 +105,11 @@ function Layoutcomp() {
     //   icon: <img src={ass} width={45} height={45} />,
     //   onClick: () => navigate("/AssetsTable"),
     // },
-    // {
-    //   title: "Earn Deduct",
-    //   icon: <img src={ear} width={40} height={40} />,
-    //   onClick: () => navigate("/EarnDeductTable"),
-    // },
+    {
+      title: "Earn Deduct",
+      icon: <img src={ear} width={40} height={40} />,
+      onClick: () => navigate("/EarnDeductTable"),
+    },
     // {
     //   title: "Form7",
     //   icon: <img src={Form} width={40} height={40} />,
@@ -215,11 +215,11 @@ function Layoutcomp() {
     //   icon: <img src={PaymCarryForward} width={40} height={40} />,
     //   onClick: () => navigate("/PaymcarryForwardTable"),
     // },
-    // {
-    //   title: "Paym Category",
-    //   icon: <img src={PaymCategory} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymCategoryTable"),
-    // },
+    {
+      title: "Paym Category",
+      icon: <img src={PaymCategory} width={40} height={40} />,
+      onClick: () => navigate("/PaymCategoryTable"),
+    },
     {
       title: "Paym Company",
       icon: <img src={PaymCompany} width={40} height={40} />,
@@ -280,11 +280,11 @@ function Layoutcomp() {
       icon: <img src={PaymEmpProfile} width={40} height={40} />,
       onClick: () => navigate("/PaymEmployeeProfile1Tables"),
     },
-    // {
-    //   title: "Paym emp work Details",
-    //   icon: <img src={PaymEmpWorkDeta} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymEmployeeWorkDetailTables"),
-    // },
+    {
+      title: "Paym emp work Details",
+      icon: <img src={PaymEmpWorkDeta} width={40} height={40} />,
+      onClick: () => navigate("/PaymEmployeeWorkDetailTables"),
+    },
     // {
     //   title: "Paym Encashment Details ",
     //   icon: <img src={PaymEncashDeta} width={40} height={40} />,
@@ -330,11 +330,11 @@ function Layoutcomp() {
     //   icon: <img src={PaymOverHeadCost} width={40} height={40} />,
     //   onClick: () => navigate("/PaymOverHeadingcostTable"),
     // },
-    // {
-    //   title: "Paym Pay Bill",
-    //   icon: <img src={PaymPayBill} width={40} height={40} />,
-    //   onClick: () => navigate("/PaympaybillTable"),
-    // },
+    {
+      title: "Paym Pay Bill",
+      icon: <img src={PaymPayBill} width={40} height={40} />,
+      onClick: () => navigate("/PaympaybillTable"),
+    },
     {
       title: "Paym Pf",
       icon: <img src={PaymPf} width={40} height={40} />,
@@ -360,11 +360,11 @@ function Layoutcomp() {
     //   icon: <img src={Pfep} width={40} height={40} />,
     //   onClick: () => navigate("/PfepTable"),
     // },
-    // {
-    //   title: "PFEPF",
-    //   icon: <img src={PfEpf} width={40} height={40} />,
-    //   onClick: () => navigate("/PfepfTable"),
-    // },
+    {
+      title: "REPORTS",
+      icon: <img src={PfEpf} width={40} height={40} />,
+      onClick: () => navigate("/PfepfTable"),
+    },
     // {
     //   title: "Punch Detail",
     //   icon: <img src={PunchDetails} width={40} height={40} />,

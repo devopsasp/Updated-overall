@@ -48,6 +48,7 @@ function LoginOthers(props) {
     console.log("Username:", username);
     console.log("Password:", password);
     if (loginType == "Branch") {
+      sessionStorage.setItem("role", "branchmanager");
       postRequest(ServerConfig.url, BRANCHLOGIN, { username, password })
         .then((e) => {
           console.log(e);
@@ -95,9 +96,16 @@ function LoginOthers(props) {
           getRequest(ServerConfig.url, PAYMEMPLOYEE).then((e) => {
             var branchdet = e.data.filter((s) => s.employeeCode == username);
             if (branchdet[0].role == 1) {
+              sessionStorage.setItem("role", "hr");
               navigate("/dashboared");
             } else if (branchdet[0].role == 4) {
+              sessionStorage.setItem("role", "employee");
               navigate("/employeedashboared");
+            } else if (branchdet[0].role == 2) {
+              sessionStorage.setItem("role", "accounts");
+            } else if (branchdet[0].role == 3) {
+              sessionStorage.setItem("role", "grouphead");
+            } else if (branchdet[0].role == 5) {
             }
             // props.dispatchx(
             //   setUser({

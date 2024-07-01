@@ -20,7 +20,7 @@ import { getRequest, postRequest } from "../../serverconfiguration/requestcomp";
 import { InputLabel } from "@mui/material";
 import { ServerConfig } from "../../serverconfiguration/serverconfig";
 import { useNavigate } from "react-router-dom";
-
+import { decryptData } from "../Authentication/encryption";
 export default function LeaveAllocation1Form() {
   const navigate = useNavigate();
   const [employee, setEmployee] = useState([]);
@@ -90,7 +90,7 @@ export default function LeaveAllocation1Form() {
                </select> */}
                     <input
                       type="text"
-                      value={sessionStorage.getItem("company")}
+                      value={decryptData(sessionStorage.getItem("company"))}
                       disabled={true}
                     />
                   </FormControl>
@@ -114,7 +114,7 @@ export default function LeaveAllocation1Form() {
                     </select> */}
                     <input
                       type="text"
-                      value={sessionStorage.getItem("branch")}
+                      value={decryptData(sessionStorage.getItem("branch"))}
                       disabled={true}
                     />
                   </FormControl>

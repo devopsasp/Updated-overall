@@ -174,6 +174,16 @@ import AddInfos from "./components/Group UI/AddInfos";
 import PaympaybillTable from "./components/PaymPaybill/paympaybillTables";
 import PaymPaypfTable from "./components/PaymPf/paympfTable";
 import GroupShift from "./components/Group UI/GroupShift";
+import PayslipNewFormat from "./components/PayslipNew format/PayslipNewFormat";
+import PayslipGenerator from "./components/PayslipNew format/payslipgenerator";
+import OldPayslipGenerator from "./components/PayslipNew format/OldPayslipGenerator";
+import OldPayslip from "./components/PayslipNew format/Oldpayslip";
+import Medical from "./components/Medical/Medical";
+import MedicalSlipGenerator from "./components/Medical/MedicalSlipGenerator";
+import MedicalSlipView from "./components/Medical/MedicalSlipView";
+import ViewMedical from "./components/Medical/ViewMedical";
+import EarlyAndLate from "./components/Early and Late entries/Earlyandlateentriesform";
+
 const store = createStore(entityReducer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -189,6 +199,7 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="/loginemployee" element={<LoginOthers />} />
           <Route path="/layout" element={<Layoutcomp />} />
+          <Route path="/att" element={<BasicDateCalendar />} />
           <Route path="/home" element={<ServiceCard />}></Route>
           <Route path="/AssetsTable" element={<AssetsTable />}></Route>
           <Route path="/SampleForm" element={<SampleForm />}></Route>
@@ -522,6 +533,36 @@ root.render(
           <Route path="/TAandDReports" element={<ButtonEsi8 />}></Route>
 
           <Route path="/Masterroll" element={<MasterrollButton />}></Route>
+
+          <Route
+            path="/payslipgenerator"
+            element={<PayslipGenerator />}></Route>
+
+          <Route
+            path="/payslipgenerator/payslipnewformat"
+            element={<PayslipNewFormat />}></Route>
+
+          <Route
+            path="/oldpayslipgenerator"
+            element={<OldPayslipGenerator />}></Route>
+
+          <Route
+            path="/oldpayslipgenerator/oldpayslip"
+            element={<OldPayslip />}></Route>
+
+          <Route
+            path="/medicalslipgenerator/medical"
+            element={<Medical />}></Route>
+          <Route
+            path="/medicalslipgenerator"
+            element={<MedicalSlipGenerator />}></Route>
+
+          <Route
+            path="/viewmedical/medicalslipview"
+            element={<MedicalSlipView />}></Route>
+          <Route path="/viewmedical" element={<ViewMedical />}></Route>
+
+          <Route path="/earlyandlatentries" element={<EarlyAndLate />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
