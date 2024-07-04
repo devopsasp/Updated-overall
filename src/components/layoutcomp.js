@@ -1,5 +1,5 @@
 // Layoutcomp.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -74,363 +74,453 @@ import ShiftMonth from "../images/shift-month-icon.png";
 import ShiftPattern from "../images/shift-pattern-icon.png";
 import TempShiftDetails from "../images/temp-shift-detail-icon.png";
 import YearEnd from "../images/yearend-icon.png";
+import group from "../images/group-icons.png";
+import groupshift from "../images/group-shift-icons.png";
 
 function Layoutcomp() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [userRole, setUserRole] = useState(null);
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
 
+  useEffect(() => {
+    const role = sessionStorage.getItem("role");
+    setUserRole(role);
+  }, []);
+
   // Sample data for cards
   const cardsData = [
-    // {
-    //   title: "Daily Timecard",
-    //   icon: <img src={daily} width={40} height={40} />,
-    //   onClick: () => navigate("/dailytimecardtable"),
-    // },
-    // {
-    //   title: "Attendance Ceilling",
-    //   icon: <img src={att} width={30} height={30} />,
-    //   onClick: () => navigate("/AttendenceTable"),
-    // },
-    // {
-    //   title: "Attendance",
-    //   icon: <img src={att} width={30} height={30} />,
-    //   onClick: () => navigate("/Attendance"),
-    // },
-    // {
-    //   title: "Asset",
-    //   icon: <img src={ass} width={45} height={45} />,
-    //   onClick: () => navigate("/AssetsTable"),
-    // },
+    {
+      title: "Daily Timecard",
+      icon: <img src={daily} width={40} height={40} />,
+      onClick: () => navigate("/dailytimecardtable"),
+      roles: ["branchmanager", "hr", "employee", "accounts", "grouphead"],
+    },
+    {
+      title: "Attendance Ceilling",
+      icon: <img src={att} width={30} height={30} />,
+      onClick: () => navigate("/AttendenceTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Attendance",
+      icon: <img src={att} width={30} height={30} />,
+      onClick: () => navigate("/Attendance"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Asset",
+      icon: <img src={ass} width={45} height={45} />,
+      onClick: () => navigate("/AssetsTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Earn Deduct",
       icon: <img src={ear} width={40} height={40} />,
       onClick: () => navigate("/EarnDeductTable"),
+      roles: ["hr"],
     },
-    // {
-    //   title: "Form7",
-    //   icon: <img src={Form} width={40} height={40} />,
-    //   onClick: () => navigate("/Form7table"),
-    // },
-    // {
-    //   title: "HR Authentication",
-    //   icon: <img src={HRAuth} width={40} height={40} />,
-    //   onClick: () => navigate("/HrAuthenticationTable"),
-    // },
-    // {
-    //   title: "HRMM Course",
-    //   icon: <img src={Hrmmcourse} width={40} height={40} />,
-    //   onClick: () => navigate("/Hrmcoursetable"),
-    // },
-    // {
-    //   title: "HRMM Skill Master",
-    //   icon: <img src={HrmmSkillmaster} width={40} height={40} />,
-    //   onClick: () => navigate("/Hrmskillmastertable"),
-    // },
-    // {
-    //   title: "HRMM Specialization",
-    //   icon: <img src={HrmmSpecilalization} width={40} height={40} />,
-    //   onClick: () => navigate("/HrmmSpecializationtable"),
-    // },
-    // {
-    //   title: "Job Status",
-    //   icon: <img src={Jobstatus} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymJobStatusTable"),
-    // },
+    {
+      title: "Form7",
+      icon: <img src={Form} width={40} height={40} />,
+      onClick: () => navigate("/Form7table"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "HR Authentication",
+      icon: <img src={HRAuth} width={40} height={40} />,
+      onClick: () => navigate("/HrAuthenticationTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "HRMM Course",
+      icon: <img src={Hrmmcourse} width={40} height={40} />,
+      onClick: () => navigate("/Hrmcoursetable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "HRMM Skill Master",
+      icon: <img src={HrmmSkillmaster} width={40} height={40} />,
+      onClick: () => navigate("/Hrmskillmastertable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "HRMM Specialization",
+      icon: <img src={HrmmSpecilalization} width={40} height={40} />,
+      onClick: () => navigate("/HrmmSpecializationtable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Job Status",
+      icon: <img src={Jobstatus} width={40} height={40} />,
+      onClick: () => navigate("/PaymJobStatusTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Leave Allocation",
       icon: <img src={LeaveAllocation} width={40} height={40} />,
       onClick: () => navigate("/LeaveAllocationMasterTable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Leave Apply",
-    //   icon: <img src={LeaveApprove} width={40} height={40} />,
-    //   onClick: () => navigate("/LeaveApplyTable"),
-    // },
-    // {
-    //   title: "Leave Approve Hr",
-    //   icon: <img src={LeaveAppHr} width={40} height={40} />,
-    //   onClick: () => navigate("/LeaveApproveHrTable"),
-    // },
-    // {
-    //   title: "Leave Approve Manager",
-    //   icon: <img src={LeaAppMan} width={40} height={40} />,
-    //   onClick: () => navigate("/LeaveApproveHrTable"),
-    // },
-    // {
-    //   title: "Leave Settlement",
-    //   icon: <img src={LeaSettlement} width={40} height={40} />,
-    //   onClick: () => navigate("/LeaveSettlementTable"),
-    // },
-    // {
-    //   title: "Loan Entry",
-    //   icon: <img src={LoanEntry} width={40} height={40} />,
-    //   onClick: () => navigate("/LoanEntryTable"),
-    // },
-    // {
-    //   title: "Loan Post",
-    //   icon: <img src={LoanPost} width={40} height={40} />,
-    //   onClick: () => navigate("/LoanPostTable"),
-    // },
-    // {
-    //   title: "Loan PreCloser",
-    //   icon: <img src={LoanPrecloser} width={40} height={40} />,
-    //   onClick: () => navigate("/LoanPreCloserTable"),
-    // },
-    // {
-    //   title: "On Duty",
-    //   icon: <img src={OnDuty} width={40} height={40} />,
-    //   onClick: () => navigate("/OnDutyTable"),
-    // },
-    // {
-    //   title: "OTS Lab",
-    //   icon: <img src={OTSLab} width={40} height={40} />,
-    //   onClick: () => navigate("/OtsLabTable"),
-    // },
-    // {
-    //   title: "Pay Input",
-    //   icon: <img src={PayInput} width={40} height={40} />,
-    //   onClick: () => navigate("/payInputTable"),
-    // },
-    // {
-    //   title: "Paym Att Bonus",
-    //   icon: <img src={PayAttBonus} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymAttBonusTable"),
-    // },
-    // {
-    //   title: "Paym Bank",
-    //   icon: <img src={PaymBank} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymBankTable"),
-    // },
+    {
+      title: "Leave Apply",
+      icon: <img src={LeaveApprove} width={40} height={40} />,
+      onClick: () => navigate("/LeaveApplyTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Leave Approve Hr",
+      icon: <img src={LeaveAppHr} width={40} height={40} />,
+      onClick: () => navigate("/LeaveApproveHrTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Leave Approve Manager",
+      icon: <img src={LeaAppMan} width={40} height={40} />,
+      onClick: () => navigate("/LeaveApproveHrTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Leave Settlement",
+      icon: <img src={LeaSettlement} width={40} height={40} />,
+      onClick: () => navigate("/LeaveSettlementTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Loan Entry",
+      icon: <img src={LoanEntry} width={40} height={40} />,
+      onClick: () => navigate("/LoanEntryTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Loan Post",
+      icon: <img src={LoanPost} width={40} height={40} />,
+      onClick: () => navigate("/LoanPostTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Loan PreCloser",
+      icon: <img src={LoanPrecloser} width={40} height={40} />,
+      onClick: () => navigate("/LoanPreCloserTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "On Duty",
+      icon: <img src={OnDuty} width={40} height={40} />,
+      onClick: () => navigate("/OnDutyTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "OTS Lab",
+      icon: <img src={OTSLab} width={40} height={40} />,
+      onClick: () => navigate("/OtsLabTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Pay Input",
+      icon: <img src={PayInput} width={40} height={40} />,
+      onClick: () => navigate("/payInputTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Att Bonus",
+      icon: <img src={PayAttBonus} width={40} height={40} />,
+      onClick: () => navigate("/PaymAttBonusTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Bank",
+      icon: <img src={PaymBank} width={40} height={40} />,
+      onClick: () => navigate("/PaymBankTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Paym Branch",
       icon: <img src={PaymBranch} width={40} height={40} />,
       onClick: () => navigate("/PaymBranchtable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Paym Carry Forward",
-    //   icon: <img src={PaymCarryForward} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymcarryForwardTable"),
-    // },
+    {
+      title: "Paym Carry Forward",
+      icon: <img src={PaymCarryForward} width={40} height={40} />,
+      onClick: () => navigate("/PaymcarryForwardTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Paym Category",
       icon: <img src={PaymCategory} width={40} height={40} />,
       onClick: () => navigate("/PaymCategoryTable"),
+      roles: ["branchmanager"],
     },
     {
       title: "Paym Company",
       icon: <img src={PaymCompany} width={40} height={40} />,
       onClick: () => navigate("/PaycompanyTable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Paym Computation",
-    //   icon: <img src={PaymComputation} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymComputationtables"),
-    // },
+    {
+      title: "Paym Computation",
+      icon: <img src={PaymComputation} width={40} height={40} />,
+      onClick: () => navigate("/PaymComputationtables"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Paym Department",
       icon: <img src={PaymDep} width={40} height={40} />,
       onClick: () => navigate("/PaymDepartmentTable"),
+      roles: ["branchmanager"],
     },
     {
       title: "Paym Designation",
       icon: <img src={PaymDesig} width={40} height={40} />,
       onClick: () => navigate("/PaymDesignationTable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Paym Deduction",
-    //   icon: <img src={PaymDesig} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymDeductionTable"),
-    // },
-    // {
-    //   title: "Paym Division",
-    //   icon: <img src={PaymDiv} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymDIvisionTable"),
-    // },
-    // {
-    //   title: "Paym Earning",
-    //   icon: <img src={PaymEarn} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymEarnTable"),
-    // },
-    // {
-    //   title: "Paym Emp Deduction",
-    //   icon: <img src={PaymEmpEarn} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymEmpDeductionTable"),
-    // },
-    // {
-    //   title: "Paym Emp Earning",
-    //   icon: <img src={PaymEmpDeduc} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymEmpEarningsTable"),
-    // },
+    {
+      title: "Paym Deduction",
+      icon: <img src={PaymDesig} width={40} height={40} />,
+      onClick: () => navigate("/PaymDeductionTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Division",
+      icon: <img src={PaymDiv} width={40} height={40} />,
+      onClick: () => navigate("/PaymDIvisionTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Earning",
+      icon: <img src={PaymEarn} width={40} height={40} />,
+      onClick: () => navigate("/PaymEarnTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Emp Deduction",
+      icon: <img src={PaymEmpEarn} width={40} height={40} />,
+      onClick: () => navigate("/PaymEmpDeductionTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Emp Earning",
+      icon: <img src={PaymEmpDeduc} width={40} height={40} />,
+      onClick: () => navigate("/PaymEmpEarningsTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Paym Employee",
       icon: <img src={PaymEmplo} width={40} height={40} />,
       onClick: () => navigate("/PaymEmpTable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Paym Emp Leave",
-    //   icon: <img src={PaymEmpLeave} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymEmpLeaveTable"),
-    // },
+    {
+      title: "Paym Emp Leave",
+      icon: <img src={PaymEmpLeave} width={40} height={40} />,
+      onClick: () => navigate("/PaymEmpLeaveTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Paym emp profile",
       icon: <img src={PaymEmpProfile} width={40} height={40} />,
       onClick: () => navigate("/PaymEmployeeProfile1Tables"),
+      roles: ["branchmanager"],
     },
     {
       title: "Paym emp work Details",
       icon: <img src={PaymEmpWorkDeta} width={40} height={40} />,
       onClick: () => navigate("/PaymEmployeeWorkDetailTables"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Paym Encashment Details ",
-    //   icon: <img src={PaymEncashDeta} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymEncashmentDetailsTables"),
-    // },
+    {
+      title: "Paym Encashment Details ",
+      icon: <img src={PaymEncashDeta} width={40} height={40} />,
+      onClick: () => navigate("/PaymEncashmentDetailsTables"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Paym Grade ",
       icon: <img src={PaymGrade} width={40} height={40} />,
       onClick: () => navigate("/PaymgradeTables"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Paym holiday ",
-    //   icon: <img src={PaymHoliday} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymHolidayTables"),
-    // },
-    // {
-    //   title: "Paym leave ",
-    //   icon: <img src={PaymLeave} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymleaveTables"),
-    // },
-    // {
-    //   title: "Paym leave Allocation ",
-    //   icon: <img src={PaymLeaveAlloc} width={40} height={40} />,
-    //   onClick: () => navigate("/Paymleaveallocation1Tables"),
-    // },
-    // {
-    //   title: "Paym level ",
-    //   icon: <img src={PaymLevel} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymlevelTables"),
-    // },
-    // {
-    //   title: "Paym Loan ",
-    //   icon: <img src={PaymLoan} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymLoanTable"),
-    // },
-    // {
-    //   title: "Paym Loan Diminshing",
-    //   icon: <img src={PaymLoanDiminishing} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymLoanDiminishingTable"),
-    // },
-    // {
-    //   title: "Paym Over Heading cost",
-    //   icon: <img src={PaymOverHeadCost} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymOverHeadingcostTable"),
-    // },
+    {
+      title: "Paym holiday ",
+      icon: <img src={PaymHoliday} width={40} height={40} />,
+      onClick: () => navigate("/PaymHolidayTables"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym leave ",
+      icon: <img src={PaymLeave} width={40} height={40} />,
+      onClick: () => navigate("/PaymleaveTables"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym leave Allocation ",
+      icon: <img src={PaymLeaveAlloc} width={40} height={40} />,
+      onClick: () => navigate("/Paymleaveallocation1Tables"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym level ",
+      icon: <img src={PaymLevel} width={40} height={40} />,
+      onClick: () => navigate("/PaymlevelTables"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Loan ",
+      icon: <img src={PaymLoan} width={40} height={40} />,
+      onClick: () => navigate("/PaymLoanTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Loan Diminshing",
+      icon: <img src={PaymLoanDiminishing} width={40} height={40} />,
+      onClick: () => navigate("/PaymLoanDiminishingTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Over Heading cost",
+      icon: <img src={PaymOverHeadCost} width={40} height={40} />,
+      onClick: () => navigate("/PaymOverHeadingcostTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Paym Pay Bill",
       icon: <img src={PaymPayBill} width={40} height={40} />,
       onClick: () => navigate("/PaympaybillTable"),
+      roles: ["branchmanager"],
     },
     {
       title: "Paym Pf",
       icon: <img src={PaymPf} width={40} height={40} />,
       onClick: () => navigate("/PaymPaypfTable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Paym Shift",
-    //   icon: <img src={PaymShift} width={40} height={40} />,
-    //   onClick: () => navigate("/PaymshiftTable"),
-    // },
-    // {
-    //   title: "Paym Output Loan",
-    //   icon: <img src={PaymOutputLoan} width={40} height={40} />,
-    //   onClick: () => navigate("/PaympayoutputloanTable"),
-    // },
-    // {
-    //   title: "Paym Final Settlement",
-    //   icon: <img src={PaymFinalSettlement} width={40} height={40} />,
-    //   onClick: () => navigate("/PayrollFinalSettlemetTable"),
-    // },
-    // {
-    //   title: "PFEp",
-    //   icon: <img src={Pfep} width={40} height={40} />,
-    //   onClick: () => navigate("/PfepTable"),
-    // },
+    {
+      title: "Group name",
+      icon: <img src={group} width={40} height={40} />,
+      onClick: () => navigate("/groupui"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Group shift",
+      icon: <img src={groupshift} width={40} height={40} />,
+      onClick: () => navigate("/groupshift"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Shift",
+      icon: <img src={PaymShift} width={40} height={40} />,
+      onClick: () => navigate("/PaymshiftTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Output Loan",
+      icon: <img src={PaymOutputLoan} width={40} height={40} />,
+      onClick: () => navigate("/PaympayoutputloanTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Paym Final Settlement",
+      icon: <img src={PaymFinalSettlement} width={40} height={40} />,
+      onClick: () => navigate("/PayrollFinalSettlemetTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "PFEp",
+      icon: <img src={Pfep} width={40} height={40} />,
+      onClick: () => navigate("/PfepTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "REPORTS",
       icon: <img src={PfEpf} width={40} height={40} />,
       onClick: () => navigate("/PfepfTable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Punch Detail",
-    //   icon: <img src={PunchDetails} width={40} height={40} />,
-    //   onClick: () => navigate("/PunchdetailsTable"),
-    // },
-    // {
-    //   title: "Salary Period",
-    //   icon: <img src={SalaryPeriod} width={40} height={40} />,
-    //   onClick: () => navigate("/SalaryPeriodTable"),
-    // },
-    // {
-    //   title: "Salary Structure",
-    //   icon: <img src={SalaryStructure} width={40} height={40} />,
-    //   onClick: () => navigate("/SalaryStructureTable"),
-    // },
-    // {
-    //   title: "Shift Balance",
-    //   icon: <img src={ShiftBalance} width={40} height={40} />,
-    //   onClick: () => navigate("/ShiftBalanceTable"),
-    // },
+    {
+      title: "Punch Detail",
+      icon: <img src={PunchDetails} width={40} height={40} />,
+      onClick: () => navigate("/PunchdetailsTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Salary Period",
+      icon: <img src={SalaryPeriod} width={40} height={40} />,
+      onClick: () => navigate("/SalaryPeriodTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Salary Structure",
+      icon: <img src={SalaryStructure} width={40} height={40} />,
+      onClick: () => navigate("/SalaryStructureTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Shift Balance",
+      icon: <img src={ShiftBalance} width={40} height={40} />,
+      onClick: () => navigate("/ShiftBalanceTable"),
+      roles: ["branchmanager"],
+    },
     {
       title: "Shift Details",
       icon: <img src={ShiftDetails} width={40} height={40} />,
       onClick: () => navigate("/ShiftDetailsTable"),
+      roles: ["branchmanager"],
     },
-    // {
-    //   title: "Shift Month",
-    //   icon: <img src={ShiftMonth} width={40} height={40} />,
-    //   onClick: () => navigate("/ShiftMonthTable"),
-    // },
-    // {
-    //   title: "Shift Pattern",
-    //   icon: <img src={ShiftPattern} width={40} height={40} />,
-    //   onClick: () => navigate("/ShiftPatternTable"),
-    // },
-    // {
-    //   title: "Temp shift Details",
-    //   icon: <img src={TempShiftDetails} width={40} height={40} />,
-    //   onClick: () => navigate("/TempshiftdetailsTables"),
-    // },
-    // {
-    //   title: "Year End",
-    //   icon: <img src={YearEnd} width={40} height={40} />,
-    //   onClick: () => navigate("/YearEndTable"),
-    // },
-    // {
-    //   title: "Year Paym job status",
-    //   icon: <img src={YearEnd} width={40} height={40} />,
-    //   onClick: () => navigate("/YearEndTable"),
-    // },
-    // {
-    //   title: "payslip",
-    //   icon: <img src={SalaryPeriod} width={40} height={40} />,
-    //   onClick: () => navigate("/Paycalc"),
-    // },
-    // {
-    //   title: "timesheet",
-    //   icon: <img src={daily} width={40} height={40} />,
-    //   onClick: () => navigate("/TimesheetManager"),
-    // },
+    {
+      title: "Shift Month",
+      icon: <img src={ShiftMonth} width={40} height={40} />,
+      onClick: () => navigate("/ShiftMonthTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Shift Pattern",
+      icon: <img src={ShiftPattern} width={40} height={40} />,
+      onClick: () => navigate("/ShiftPatternTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Temp shift Details",
+      icon: <img src={TempShiftDetails} width={40} height={40} />,
+      onClick: () => navigate("/TempshiftdetailsTables"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Year End",
+      icon: <img src={YearEnd} width={40} height={40} />,
+      onClick: () => navigate("/YearEndTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "Year Paym job status",
+      icon: <img src={YearEnd} width={40} height={40} />,
+      onClick: () => navigate("/YearEndTable"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "payslip",
+      icon: <img src={SalaryPeriod} width={40} height={40} />,
+      onClick: () => navigate("/payslipgenerator"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "timesheet",
+      icon: <img src={daily} width={40} height={40} />,
+      onClick: () => navigate("/TimesheetManager"),
+      roles: ["branchmanager"],
+    },
   ];
 
   // Filtering function
-  const filteredCards = cardsData.filter((card) =>
-    card.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCards = cardsData
+    .filter((card) => card.roles.includes(userRole))
+    .filter((card) =>
+      card.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   return (
     <Container>

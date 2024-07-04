@@ -19,12 +19,16 @@ import { inputLeaveApplyForm } from "./LeaveApply";
 import { InputLabel } from "@mui/material";
 import { ServerConfig } from "../../serverconfiguration/serverconfig";
 import { useNavigate } from "react-router-dom";
-
+import { decryptData } from "../Authentication/encryption";
 export default function LeaveAppForm() {
   const navigate = useNavigate();
   const [employee, setEmployee] = useState([]);
-  const [company, setCompany] = useState(sessionStorage.getItem("company"));
-  const [branch, setBranch] = useState(sessionStorage.getItem("branch"));
+  const [company, setCompany] = useState(
+    decryptData(sessionStorage.getItem("company"))
+  );
+  const [branch, setBranch] = useState(
+    decryptData(sessionStorage.getItem("branch"))
+  );
   const [pnEmployeeId, setEmployeeId] = useState("");
   const [employeeCode, setEmployeeCode] = useState("");
   const [employeeName, setEmployeeName] = useState("");
@@ -181,7 +185,9 @@ export default function LeaveAppForm() {
                       {employee
                         .filter(
                           (e) =>
-                            e.pnCompanyId == company && e.pnBranchId == branch
+                            e.pnCompanyId == company &&
+                            e.pnBranchId == branch &&
+                            e.pnEmployeeId == pnEmployeeId
                         )
                         .map((e) => (
                           <option>{e.employeeCode}</option>

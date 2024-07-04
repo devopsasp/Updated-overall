@@ -563,6 +563,8 @@ root.render(
           <Route path="/viewmedical" element={<ViewMedical />}></Route>
 
           <Route path="/earlyandlatentries" element={<EarlyAndLate />}></Route>
+
+          <Route path="/leaveapprovenew" element={<LeaveApprovenew />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

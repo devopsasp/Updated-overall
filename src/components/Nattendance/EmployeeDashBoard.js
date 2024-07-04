@@ -7,6 +7,9 @@ import React from "react";
 import { ServerConfig } from "../../serverconfiguration/serverconfig";
 import { NATTENDANCE } from "../../serverconfiguration/controllers";
 import { getRequest } from "../../serverconfiguration/requestcomp";
+import { Navigate } from "react-router-dom";
+import { Button } from "@mui/material";
+
 class EmployeeDashBoard extends React.Component {
   constructor() {
     super();
@@ -31,6 +34,7 @@ class EmployeeDashBoard extends React.Component {
       start: record.intime, // Assuming intime is the start time of the event
       end: record.outtime, // Assuming out_time is the end time of the event
     }));
+
     return (
       <div>
         {/*this.state.attendance.map((e) => {
@@ -52,6 +56,7 @@ class EmployeeDashBoard extends React.Component {
             end: "dayGridMonth,timeGridWeek,timeGridDay",
           }}
         />
+        <Button variant="outlined">Move to layout</Button>
       </div>
     );
   }

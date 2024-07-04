@@ -20,6 +20,9 @@ import { Edit, Delete } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
 import { tableCellClasses } from "@mui/material/TableCell";
+import { postRequest } from "../../serverconfiguration/requestcomp";
+import { ServerConfig } from "../../serverconfiguration/serverconfig";
+import { SAVE } from "../../serverconfiguration/controllers";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -39,6 +42,37 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+
+const handlesaveall = () => {
+  postRequest(ServerConfig.url, SAVE, {
+    query: `INSERT INTO time_card 
+      SELECT pn_companyid, pn_branchid, emp_code, emp_name, shift_code, dates, days, intime, break_out, break_in, early_out, outtime, late_in, late_out, ot_hrs, status, leave_code, data, pn_EmployeeID, flag
+      FROM temp_timecard;`,
+  })
+    .then((response) => {
+      alert("Attendance saved successfully!");
+
+      return postRequest(ServerConfig.url, SAVE, {
+        query: `DELETE FROM temp_timecard;`,
+      });
+    })
+    .then((deleteResponse) => {
+      alert("Data deleted from temp_timecard.");
+
+      return postRequest(ServerConfig.url, SAVE, {
+        query: `INSERT INTO backup_attendance 
+        SELECT pn_companyid, pn_branchid, emp_code, emp_name, shift_code, dates, days, intime, break_out, break_in, early_out, outtime, late_in, late_out, ot_hrs, status, leave_code, data, pn_EmployeeID, flag
+        FROM time_card;`,
+      });
+    })
+    .then((insertResponse) => {
+      alert("Data inserted into backup_attendance.");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Operation failed. Please try again.");
+    });
+};
 
 function filterArray(array, column, value) {
   return array.filter((item) => item[column] === value);
@@ -136,8 +170,8 @@ const JsonTable = ({ jsonData, url }) => {
             //textAlign: "center",
             transition: "background-color 0.3s ease",
           }}>
-          Search By{" "}
-          <select
+          {/* Search By{" "} */}
+          {/* <select
             onChange={(e) => {
               setSearchColumn(e.currentTarget.value);
             }}
@@ -165,14 +199,14 @@ const JsonTable = ({ jsonData, url }) => {
                   : ""}
               </option>
             ))}
-          </select>
+          </select> */}
         </div>
         <div style={{ display: "inline", paddingTop: "22px" }}>
-          <SearchIcon
+          {/* <SearchIcon
             style={{ alignItems: "center", width: "1.5rem", height: "1rem" }}
-          />
+          /> */}
         </div>
-        <input
+        {/* <input
           type="text"
           component={Paper}
           placeholder="search...."
@@ -185,7 +219,15 @@ const JsonTable = ({ jsonData, url }) => {
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
-        />
+        /> */}
+      </div>
+      <div>
+        <Button
+          variant="outlined"
+          style={{ marginBottom: "20px", marginLeft: "1300px" }}
+          onClick={handlesaveall}>
+          Save All
+        </Button>
       </div>
       <TableContainer component={Paper} style={{ maxWidth: "100%" }}>
         <Table size="xxlarge">

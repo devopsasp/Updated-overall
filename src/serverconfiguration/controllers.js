@@ -76,3 +76,4 @@ export const AGGREGATE = "Aggregate";
 export const NATTENDANCE = "Timecards";
 export const PAYOUTPUTESI = "PayOutputEsis";
 export const PAYMVPF = "PaymVpfs";
+export const TEMPTIMECARDS = "TempTimecards";
