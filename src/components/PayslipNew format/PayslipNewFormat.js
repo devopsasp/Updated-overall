@@ -12,6 +12,8 @@ import {
   Box,
   Divider,
   Button,
+  FormControlLabel,
+  Checkbox,
 } from "@mui/material";
 import {
   PAYMPAYBILL,
@@ -26,6 +28,7 @@ import { getRequest, postRequest } from "../../serverconfiguration/requestcomp";
 import { useLocation } from "react-router-dom";
 import generatePDF from "react-to-pdf";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PayslipNewFormat = () => {
   const targetRef = useRef();
@@ -35,6 +38,24 @@ const PayslipNewFormat = () => {
   const [employeeprofile, setemployeeprofile] = useState([]);
   const [totalsalary, setTotalSalary] = useState([{}]);
   const [employeework, setemployeework] = useState([]);
+  const [elegant, setelegant] = useState(false);
+  const [format, setformat] = useState(false);
+
+  const history = useNavigate();
+
+  const handlepayslipelegant = (event) => {
+    setelegant(event.target.checked);
+    if (event.target.checked) {
+      history("/payslipelegant");
+    }
+  };
+
+  const handlepayslipformat = (event) => {
+    setformat(event.target.checked);
+    if (event.target.checked) {
+      history("/payslipmonthly");
+    }
+  };
 
   const roundUpValue = (value, decimals = 2) => {
     const multiplier = Math.pow(10, decimals);
@@ -145,6 +166,30 @@ const PayslipNewFormat = () => {
   return (
     <>
       <div ref={targetRef}>
+        <Box textAlign="right" mb={2}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={elegant}
+                onChange={handlepayslipelegant}
+                name="Elegant"
+                color="primary"
+              />
+            }
+            label="Elegant"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={format}
+                onChange={handlepayslipformat}
+                name="Format"
+                color="primary"
+              />
+            }
+            label="Format"
+          />
+        </Box>
         <Paper
           style={{
             padding: "20px",

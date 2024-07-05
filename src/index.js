@@ -183,6 +183,8 @@ import MedicalSlipGenerator from "./components/Medical/MedicalSlipGenerator";
 import MedicalSlipView from "./components/Medical/MedicalSlipView";
 import ViewMedical from "./components/Medical/ViewMedical";
 import EarlyAndLate from "./components/Early and Late entries/Earlyandlateentriesform";
+import Payslipelegant from "./components/PayslipNew format/Payslipelegant";
+import Payslipmonthly from "./components/PayslipNew format/Payslipmonthly";
 
 const store = createStore(entityReducer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -565,6 +567,10 @@ root.render(
           <Route path="/earlyandlatentries" element={<EarlyAndLate />}></Route>
 
           <Route path="/leaveapprovenew" element={<LeaveApprovenew />}></Route>
+
+          <Route path="/payslipelegant" element={<Payslipelegant />}></Route>
+
+          <Route path="/payslipmonthly" element={<Payslipmonthly />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
