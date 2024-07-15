@@ -76,7 +76,7 @@ import TempShiftDetails from "../images/temp-shift-detail-icon.png";
 import YearEnd from "../images/yearend-icon.png";
 import group from "../images/group-icons.png";
 import groupshift from "../images/group-shift-icons.png";
-
+import masterrols from "../images/masterroll-icons.jpeg";
 function Layoutcomp() {
   const [searchQuery, setSearchQuery] = useState("");
   const [userRole, setUserRole] = useState(null);
@@ -511,6 +511,12 @@ function Layoutcomp() {
       title: "timesheet",
       icon: <img src={daily} width={40} height={40} />,
       onClick: () => navigate("/TimesheetManager"),
+      roles: ["branchmanager"],
+    },
+    {
+      title: "masterrols",
+      icon: <img src={masterrols} width={40} height={40} />,
+      onClick: () => navigate("/Mastterrol"),
       roles: ["branchmanager"],
     },
   ];

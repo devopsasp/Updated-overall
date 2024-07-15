@@ -16,72 +16,72 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import SettingsApplicationsSharpIcon from "@mui/icons-material/SettingsApplicationsSharp";
 import Avatar from "@mui/material/Avatar";
 import { Navigate, useNavigate } from "react-router-dom";
-// import daily from "../images/Daily-timecard-icon.png";
-// import att from "../images/attendance-icon.png";
-// import ass from "../images/assest-icon.png";
+import daily from "../images/Daily-timecard-icon.png";
+import att from "../images/attendance-icon.png";
+import ass from "../images/assest-icon.png";
 import ear from "../images/Earn-Deduction-icon.png";
-// import Form from "../images/Form7-icon.png";
-// import HRAuth from "../images/Hr-icon.png";
-// import Hrmmcourse from "../images/hrmm-icon.png";
-// import HrmmSkillmaster from "../images/hrmm-skillmaster-icon.png";
-// import HrmmSpecilalization from "../images/hrmm-specilization-icon.png";
-// import Jobstatus from "../images/job-status-icon.png";
-// import LeaveAllocation from "../images/Leave-allocation-icon.png";
-// import LeaveApprove from "../images/Leave-apply-icon.png";
-// import LeaveAppHr from "../images/leave-approveHr-icon.png";
-// import LeaAppMan from "../images/Leave-approveMG-icon.png";
-// import LeaSettlement from "../images/leave-settlement-icon.png";
-// import LoanEntry from "../images/loan-entry-icon.png";
-// import LoanPost from "../images/Loan-post-icon.png";
-// import LoanPrecloser from "../images/loan-precloser-icon.png";
-// import OnDuty from "../images/Onduty-icon.png";
-// import OTSLab from "../images/ots-lab-icon.png";
-// import PayInput from "../images/Payinput-icon.png";
-// import PayAttBonus from "../images/Paym-att-bonus-icon.png";
-// import PaymBank from "../images/Paym-bank-icon.png";
-// import PaymBranch from "../images/paym-branch-icon.png";
-// import PaymCarryForward from "../images/paym-carryforward-icon.png";
-// import PaymCategory from "../images/Paym-category-icon.png";
-// import PaymCompany from "../images/paym-company-icon.png";
-// import PaymComputation from "../images/paym-computation-icon.png";
-// import PaymDep from "../images/paym-department-icon.png";
-// import PaymDesig from "../images/paym-desiganation-icon.png";
-// import PaymDiv from "../images/paym-division-icon.png";
-// import PaymEarn from "../images/paym-earning-icon.png";
-// import PaymEmpEarn from "../images/paym-empearning-icon.png";
-// import PaymEmpDeduc from "../images/pay-deduction-icon.png";
-// import PaymEmplo from "../images/paym-employee-icon.png";
-// import PaymEmpLeave from "../images/paym-employee-leave-icon.png";
-// import PaymEmpProfile from "../images/paym-profile-icon.png";
-// import PaymEmpWorkDeta from "../images/paym-employeework-details-icon.png";
-// import PaymEncashDeta from "../images/paym-encashment-details-icon.png";
-// import PaymGrade from "../images/paym-grade-icon.png";
-// import PaymHoliday from "../images/paym-holiday-icon.png";
-// import PaymLeave from "../images/paym-leave-icon.png";
-// import PaymLeaveAlloc from "../images/paym-leave-allocation-icon.png";
-// import PaymLevel from "../images/paym-level-icon.png";
-// import PaymLoan from "../images/paym-loan-icon.png";
-// import PaymLoanDiminishing from "../images/paym-loan-diminishing-icon.png";
-// import PaymOverHeadCost from "../images/paym-over-heading-cost-icon.png";
-// import PaymPayBill from "../images/paym-payBill-icon.png";
-// import PaymPf from "../images/paym-pf-icon.png";
-// import PaymShift from "../images/paym-shift-icon.png";
-// import PaymOutputLoan from "../images/paym-output-loan-icon.png";
-// import PaymFinalSettlement from "../images/paym-final-settelement-icon.png";
-// import Pfep from "../images/pfep-icon.png";
-// import PfEpf from "../images/Pfepf-icon.png";
-// import PunchDetails from "../images/punch details-icon.png";
-// import SalaryPeriod from "../images/salary-detail-icon.png";
-// import SalaryStructure from "../images/salary-structure-icon.png";
-// import ShiftBalance from "../images/shift-balance-icon.png";
-// import ShiftDetails from "../images/shift-details-icon.png";
+import Form from "../images/Form7-icon.png";
+import HRAuth from "../images/Hr-icon.png";
+import Hrmmcourse from "../images/hrmm-icon.png";
+import HrmmSkillmaster from "../images/hrmm-skillmaster-icon.png";
+import HrmmSpecilalization from "../images/hrmm-specilization-icon.png";
+import Jobstatus from "../images/job-status-icon.png";
+import LeaveAllocation from "../images/Leave-allocation-icon.png";
+import LeaveApprove from "../images/Leave-apply-icon.png";
+import LeaveAppHr from "../images/leave-approveHr-icon.png";
+import LeaAppMan from "../images/Leave-approveMG-icon.png";
+import LeaSettlement from "../images/leave-settlement-icon.png";
+import LoanEntry from "../images/loan-entry-icon.png";
+import LoanPost from "../images/Loan-post-icon.png";
+import LoanPrecloser from "../images/loan-precloser-icon.png";
+import OnDuty from "../images/Onduty-icon.png";
+import OTSLab from "../images/ots-lab-icon.png";
+import PayInput from "../images/Payinput-icon.png";
+import PayAttBonus from "../images/Paym-att-bonus-icon.png";
+import PaymBank from "../images/Paym-bank-icon.png";
+import PaymBranch from "../images/paym-branch-icon.png";
+import PaymCarryForward from "../images/paym-carryforward-icon.png";
+import PaymCategory from "../images/Paym-category-icon.png";
+import PaymCompany from "../images/paym-company-icon.png";
+import PaymComputation from "../images/paym-computation-icon.png";
+import PaymDep from "../images/paym-department-icon.png";
+import PaymDesig from "../images/paym-desiganation-icon.png";
+import PaymDiv from "../images/paym-division-icon.png";
+import PaymEarn from "../images/paym-earning-icon.png";
+import PaymEmpEarn from "../images/paym-empearning-icon.png";
+import PaymEmpDeduc from "../images/pay-deduction-icon.png";
+import PaymEmplo from "../images/paym-employee-icon.png";
+import PaymEmpLeave from "../images/paym-employee-leave-icon.png";
+import PaymEmpProfile from "../images/paym-profile-icon.png";
+import PaymEmpWorkDeta from "../images/paym-employeework-details-icon.png";
+import PaymEncashDeta from "../images/paym-encashment-details-icon.png";
+import PaymGrade from "../images/paym-grade-icon.png";
+import PaymHoliday from "../images/paym-holiday-icon.png";
+import PaymLeave from "../images/paym-leave-icon.png";
+import PaymLeaveAlloc from "../images/paym-leave-allocation-icon.png";
+import PaymLevel from "../images/paym-level-icon.png";
+import PaymLoan from "../images/paym-loan-icon.png";
+import PaymLoanDiminishing from "../images/paym-loan-diminishing-icon.png";
+import PaymOverHeadCost from "../images/paym-over-heading-cost-icon.png";
+import PaymPayBill from "../images/paym-payBill-icon.png";
+import PaymPf from "../images/paym-pf-icon.png";
+import PaymShift from "../images/paym-shift-icon.png";
+import PaymOutputLoan from "../images/paym-output-loan-icon.png";
+import PaymFinalSettlement from "../images/paym-final-settelement-icon.png";
+import Pfep from "../images/pfep-icon.png";
+import PfEpf from "../images/Pfepf-icon.png";
+import PunchDetails from "../images/punch details-icon.png";
+import SalaryPeriod from "../images/salary-detail-icon.png";
+import SalaryStructure from "../images/salary-structure-icon.png";
+import ShiftBalance from "../images/shift-balance-icon.png";
+import ShiftDetails from "../images/shift-details-icon.png";
 
-// import ShiftMonth from "../images/shift-month-icon.png";
-// import ShiftPattern from "../images/shift-pattern-icon.png";
+import ShiftMonth from "../images/shift-month-icon.png";
+import ShiftPattern from "../images/shift-pattern-icon.png";
 import TempShiftDetails from "../images/temp-shift-detail-icon.png";
 import DashBoard from "./dashboredsss/DashBoard";
-// import { textAlign } from "html2canvas/dist/types/css/property-descriptors/text-align";
-// import YearEnd from "../images/yearend-icon.png";
+import YearEnd from "../images/yearend-icon.png";
+import masterrols from "../images/masterroll-icons.jpeg";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -168,7 +168,7 @@ export default function MainPage() {
                   </Grid>
                   <Grid item>
                     <Grid container justifyContent="center" spacing={2}>
-                      {/* <Grid item xs={3}>
+                      <Grid item xs={3}>
                         <img
                           src={daily}
                           width={30}
@@ -742,15 +742,14 @@ export default function MainPage() {
                           height={30}
                           onClick={() => navigate("/ShiftPatternTable")}
                         />
-                      </Grid> */}
+                      </Grid>
                       <Grid item xs={6} sx={{ textAlign: "center" }}>
                         <img
                           src={TempShiftDetails}
-                          width={50}
-                          height={50}
+                          width={30}
+                          height={30}
                           onClick={() => navigate("/TempshiftdetailsTables")}
                         />
-                        payslip
                       </Grid>
                       <Grid
                         item
@@ -759,14 +758,12 @@ export default function MainPage() {
                         sx={{ textAlign: "center" }}>
                         <img
                           src={ear}
-                          width={50}
-                          title="dashbored"
-                          height={50}
+                          width={30}
+                          height={30}
                           onClick={() => navigate("/employeedashboared")}
                         />
-                        dashboared
                       </Grid>
-                      {/* <Grid item xs={3}>
+                      <Grid item xs={3}>
                         <img
                           src={YearEnd}
                           width={30}
@@ -794,7 +791,15 @@ export default function MainPage() {
                           height={30}
                           onClick={() => navigate("/TimesheetManager")}
                         />
-                      </Grid> */}
+                      </Grid>
+                      <Grid item xs={3}>
+                        <img
+                          src={masterrols}
+                          width={30}
+                          height={30}
+                          onClick={() => navigate("/Mastterrol")}
+                        />
+                      </Grid>
                     </Grid>
                   </Grid>
                 </Grid>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
+
 import { useEffect } from "react";
 import {
   FormControl,
@@ -94,6 +96,11 @@ function AddInfos() {
   const [deduction10, setDeduction10] = useState("");
   const [valueA10, setValueA10] = useState("");
 
+  const location = useLocation();
+  const navdata1 = location.state;
+
+  const navigate = useNavigate();
+  console.log("navdata ", navdata1);
   const margin = { margin: "0 5px" };
 
   useEffect(() => {
@@ -251,6 +258,10 @@ function AddInfos() {
     });
   };
 
+  function handleaddEmployee() {
+    navigate("/PaymEmployeeForm");
+  }
+
   return (
     <div>
       <Grid style={{ padding: "80px 5px0 5px" }}>
@@ -259,6 +270,14 @@ function AddInfos() {
             <Typography variant="h5" color="S- Light" align="center">
               Group Form
             </Typography>
+            <Grid item xs={12} align="right">
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={handlegroupsave}>
+                Process Existing Employees
+              </Button>
+            </Grid>
             <Typography
               variant="subtitle1"
               color="textSecondary"
@@ -277,8 +296,9 @@ function AddInfos() {
                       }}
                       style={{ height: "50px" }}>
                       <option value="">Select</option>
+                      {console.log(employeegrp)}
                       {employeegrp.map((e) => (
-                        <option>{e.GroupID}</option>
+                        <option value={e.GroupID}>{e.Group_name}</option>
                       ))}
                     </select>
                   </FormControl>
@@ -355,17 +375,26 @@ function AddInfos() {
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
                     <InputLabel shrink>shiftCode</InputLabel>
-                    <select
-                      name="shiftcode"
-                      onChange={(e) => {
-                        setshiftcode(e.target.value);
-                      }}
-                      style={{ height: "50px" }}>
-                      <option value="">Select</option>
-                      {ShiftDetails.map((e) => (
-                        <option>{e.shiftCode}</option>
-                      ))}
-                    </select>
+
+                    {navdata1 != null || navdata1 != undefined ? (
+                      <TextField
+                        name="shiftcode"
+                        style={{ height: "50px" }}
+                        value={navdata1.shift.shiftCode}
+                      />
+                    ) : (
+                      <select
+                        name="shiftcode"
+                        onChange={(e) => {
+                          setshiftcode(e.target.value);
+                        }}
+                        style={{ height: "50px" }}>
+                        <option value="">Select</option>
+                        {ShiftDetails.map((e) => (
+                          <option>{e.shiftCode}</option>
+                        ))}
+                      </select>
+                    )}
                   </FormControl>
                 </Grid>
 
@@ -1187,12 +1216,20 @@ function AddInfos() {
                     onClick={handlesave}>
                     SAVE
                   </Button>
+
                   <Button
+                    variant="contained"
+                    style={margin}
+                    color="primary"
+                    onClick={handleaddEmployee}>
+                    ADD EMPLOYEE
+                  </Button>
+                  {/* <Button
                     variant="outlined"
                     color="primary"
                     onClick={handlegroupsave}>
                     Process
-                  </Button>
+                  </Button> */}
                 </Grid>
               </Grid>
             </form>

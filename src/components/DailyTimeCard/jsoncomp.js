@@ -233,11 +233,13 @@ const JsonTable = ({ jsonData, url }) => {
         <Table size="xxlarge">
           <TableHead>
             <TableRow>
-              {Object.keys(jsonData[0]).map((header) => (
-                <StyledTableCell key={header}>
-                  {header.split(/paym|pn/)}
-                </StyledTableCell>
-              ))}
+              {jsonData != null || jsonData != undefined
+                ? Object.keys(jsonData[0]).map((header) => (
+                    <StyledTableCell key={header}>
+                      {header.split(/paym|pn/)}
+                    </StyledTableCell>
+                  ))
+                : "no data available"}
               <StyledTableCell>Edit</StyledTableCell>
               <StyledTableCell>Delete</StyledTableCell>
             </TableRow>

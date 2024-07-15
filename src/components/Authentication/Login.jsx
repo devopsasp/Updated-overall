@@ -47,14 +47,16 @@ function LoginOthers(props) {
     event.preventDefault();
     console.log("Username:", username);
     console.log("Password:", password);
-    if (loginType == "Branch") {
+    if (loginType == "Admin") {
+      navigate("/layout");
+    } else if (loginType == "Branch") {
       sessionStorage.setItem("role", "branchmanager");
       postRequest(ServerConfig.url, BRANCHLOGIN, { username, password })
         .then((e) => {
           console.log(e);
 
           sessionStorage.setItem("jwt", e.data.message);
-
+          
           changeState(true);
           sessionStorage.setItem("user", username);
 
@@ -187,6 +189,7 @@ function LoginOthers(props) {
                 <option>Select Login Type</option>
                 <option>Branch</option>
                 <option>Employee</option>
+                <option>Admin</option>
               </select>
             </Grid>
           </Grid>

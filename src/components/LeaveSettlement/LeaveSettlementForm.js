@@ -73,6 +73,9 @@ export default function LeaveSettleForm() {
     };
     console.log(formData);
   };
+  function handleon2click() {
+    navigate("/Leavesettlement");
+  }
 
   const margin = { margin: "0 5px" };
   return (
@@ -392,6 +395,14 @@ export default function LeaveSettleForm() {
                     variant="contained"
                     color="primary">
                     SAVE
+                  </Button>
+                  <Button
+                    style={margin}
+                    type="reset"
+                    variant="outlined"
+                    color="primary"
+                    onClick={handleon2click}>
+                    cancel
                   </Button>
                 </Grid>
               </Grid>

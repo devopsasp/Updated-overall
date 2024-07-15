@@ -18,8 +18,10 @@ import {
 } from "@mui/material";
 import { REPORTS, SAVE } from "../../serverconfiguration/controllers";
 import { ServerConfig } from "../../serverconfiguration/serverconfig";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function GroupShift() {
+  const navigate = useNavigate();
   const [filteredEmployees, setFilteredEmployees] = useState([]);
   const [grpSettings, setGrpSettings] = useState([]);
   const [grpid, setGrpid] = useState("");
@@ -84,6 +86,10 @@ function GroupShift() {
     }
   };
 
+  function handlesave23() {
+    navigate("/groupui/addinfos");
+  }
+
   return (
     <Box
       sx={{
@@ -95,8 +101,8 @@ function GroupShift() {
         margin: "auto",
         position: "relative",
       }}>
-      <Typography variant="h4" gutterBottom>
-        Set Group
+      <Typography variant="h6" gutterBottom>
+        Move Employees to Group
       </Typography>
       <Grid item xs={12} sm={6}>
         <FormControl fullWidth>
@@ -159,6 +165,10 @@ function GroupShift() {
       <Box mt={2}>
         <Button variant="contained" onClick={handlesave}>
           Save
+        </Button>
+
+        <Button variant="contained" onClick={handlesave23}>
+          Next: Process
         </Button>
       </Box>
     </Box>

@@ -37,6 +37,10 @@ const PaymEmpTable = () => {
   function handleonclick() {
     navigate("/PaymEmployeeForm");
   }
+  function handleon23click() {
+    navigate("/GroupShift");
+  }
+
   return (
     <div>
       <JsonTable jsonData={data} url={ServerConfig.url + PAYMEMPLOYEE} />
@@ -44,6 +48,10 @@ const PaymEmpTable = () => {
         <Button variant="outlined" color="success" onClick={handleonclick}>
           Add
           <PlusIcon />
+        </Button>
+
+        <Button variant="outlined" color="primary" onClick={handleon23click}>
+          Move Employee to Group
         </Button>
       </Grid>
     </div>

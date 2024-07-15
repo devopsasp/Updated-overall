@@ -50,6 +50,7 @@ const DailyTimeCardTables = () => {
   const [filterBy, setFilterBy] = useState([]);
   const [filterdata, setFilterData] = useState("");
   const [filterColumn, setFilterColumn] = useState("");
+  const [showdata, setShowData] = useState(false);
   useEffect(() => {
     getRequest(ServerConfig.url, TEMPTIMECARDS)
       .then((e) => {
@@ -245,7 +246,21 @@ const DailyTimeCardTables = () => {
         </Button> */}
       </div>
       <div>
-        <JsonTable jsonData={data} url={ServerConfig.url + TEMPTIMECARDS} />
+        <Button
+          onClick={() => {
+            setShowData(true);
+          }}>
+          Load Data
+        </Button>
+        {showdata ? (
+          data != null || data != undefined ? (
+            <JsonTable jsonData={data} url={ServerConfig.url + TEMPTIMECARDS} />
+          ) : (
+            "no data available"
+          )
+        ) : (
+          ""
+        )}
         <Grid margin={5}></Grid>
       </div>
     </div>

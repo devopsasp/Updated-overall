@@ -155,3 +155,6 @@
 .popup.open {
   display: block;
 }
+.Background {
+  background-color: #ccc;
+}

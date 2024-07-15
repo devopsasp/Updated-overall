@@ -195,11 +195,6 @@ const Payslipelegant = () => {
                       style={{ border: "2px solid black", width: "33.33%" }}>
                       <strong> Amount</strong>
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black", width: "33.33%" }}>
-                      YTD
-                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -207,101 +202,73 @@ const Payslipelegant = () => {
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      Basic
+                      <strong>Basic</strong>
                     </TableCell>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      ₹25,000.00
-                    </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹75,000.00
+                      <strong>₹25,000.00</strong>
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      House Rent Allowance
+                      <strong>House Rent Allowance</strong>
                     </TableCell>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      ₹12,500.00
-                    </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹37,500.00
+                      <strong>₹12,500.00</strong>
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      Conveyance Allowance
+                      <strong>Conveyance Allowance</strong>
                     </TableCell>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      ₹1,500.00
-                    </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹4,500.00
+                      <strong> ₹1,500.00</strong>
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      Children Education Allowance
+                      <strong> Children Education Allowance</strong>
                     </TableCell>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      ₹300.00
-                    </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹900.00
+                      <strong> ₹300.00</strong>
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      Other Allowance
+                      <strong> Other Allowance</strong>
                     </TableCell>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      ₹5,200.00
-                    </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹15,600.00
+                      <strong>₹5,200.00</strong>
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      Gross Earnings
+                      <strong>Gross Earnings</strong>
                     </TableCell>
                     <TableCell
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
-                      ₹44,500.00
+                      <strong> ₹44,500.00</strong>
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}></TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -321,11 +288,6 @@ const Payslipelegant = () => {
                       style={{ border: "2px solid black", width: "33.33%" }}>
                       Amount
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black", width: "33.33%" }}>
-                      YTD
-                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -340,11 +302,6 @@ const Payslipelegant = () => {
                       style={{ border: "2px solid black" }}>
                       ₹850.00
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹2,500.00
-                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell
@@ -356,11 +313,6 @@ const Payslipelegant = () => {
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
                       ₹3,000.00
-                    </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹9,000.00
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -374,9 +326,6 @@ const Payslipelegant = () => {
                       style={{ border: "2px solid black" }}>
                       ₹3,850.00
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}></TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -396,11 +345,6 @@ const Payslipelegant = () => {
                       style={{ border: "2px solid black", width: "33.33%" }}>
                       Amount
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black", width: "33.33%" }}>
-                      YTD
-                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -415,11 +359,6 @@ const Payslipelegant = () => {
                       style={{ border: "2px solid black" }}>
                       ₹500.00
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹1,500.00
-                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell
@@ -431,11 +370,6 @@ const Payslipelegant = () => {
                       className={currentStyle ? currentStyle.tableCell : ""}
                       style={{ border: "2px solid black" }}>
                       ₹2,000.00
-                    </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}>
-                      ₹6,000.00
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -449,9 +383,6 @@ const Payslipelegant = () => {
                       style={{ border: "2px solid black" }}>
                       ₹2,500.00
                     </TableCell>
-                    <TableCell
-                      className={currentStyle ? currentStyle.tableCell : ""}
-                      style={{ border: "2px solid black" }}></TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

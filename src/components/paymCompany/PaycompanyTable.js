@@ -38,12 +38,18 @@ const PaycompanyTable = () => {
   function handleonclick() {
     navigate("/CompanyForm");
   }
+  function handleon2click() {
+    navigate("/Setup");
+  }
   return (
     <div>
       <Grid margin={5}>
         <Button variant="outlined" color="success" onClick={handleonclick}>
           Add
           <PlusIcon />
+        </Button>
+        <Button variant="outlined" color="success" onClick={handleon2click}>
+          Setup
         </Button>
       </Grid>
       <JsonTable jsonData={data} url={ServerConfig.url + PAYMCOMPANIES} />

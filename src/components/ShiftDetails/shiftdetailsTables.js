@@ -8,6 +8,7 @@ import { Button, Grid } from "@mui/material";
 import { SHIFTDETAILS } from "../../serverconfiguration/controllers";
 import { useNavigate } from "react-router-dom";
 import JsonTable from "./jsoncomp";
+import { Margin } from "@mui/icons-material";
 
 const PlusIcon = createSvgIcon(
   <svg
@@ -37,6 +38,9 @@ const ShiftDetailsTable = () => {
   function handleonclick() {
     navigate("/DetailsForm");
   }
+  function handleon2click() {
+    navigate("/Shiftpattern007");
+  }
   return (
     <div>
       <JsonTable jsonData={data} url={ServerConfig.url + SHIFTDETAILS} />
@@ -44,6 +48,13 @@ const ShiftDetailsTable = () => {
         <Button variant="outlined" color="success" onClick={handleonclick}>
           Add
           <PlusIcon />
+        </Button>
+        <Button
+          style={Margin}
+          variant="outlined"
+          color="success"
+          onClick={handleon2click}>
+          Cancel
         </Button>
       </Grid>
     </div>

@@ -185,6 +185,15 @@ import ViewMedical from "./components/Medical/ViewMedical";
 import EarlyAndLate from "./components/Early and Late entries/Earlyandlateentriesform";
 import Payslipelegant from "./components/PayslipNew format/Payslipelegant";
 import Payslipmonthly from "./components/PayslipNew format/Payslipmonthly";
+import Mastterrol from "./components/masterrols/Masterrols";
+import Setup from "./components/masterrols/setup";
+import Setup2 from "./components/masterrols/Setup2";
+import Shiftpattern from "./components/masterrols/shiftpattern";
+import Shiftpattern007 from "./components/masterrols/shiftpattern";
+import Shiftdetails007 from "./components/masterrols/shiftpattern";
+import Shiftpatterns0009 from "./components/masterrols/emshiftpatern";
+import LeaveSetup from "./components/masterrols/leavesetup";
+import Leavesettlement from "./components/masterrols/Leavesettlement";
 
 const store = createStore(entityReducer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -418,7 +427,7 @@ root.render(
 
           <Route path="/PaymleaveTables" element={<PaymleaveTables />}></Route>
           <Route path="/LeaveForm" element={<LeaveForm />}></Route>
-
+          <Route path="/setupleave" element={<LeaveSetup />}></Route>
           <Route
             path="/Paymleaveallocation1Tables"
             element={<Paymleaveallocation1Tables />}></Route>
@@ -570,8 +579,18 @@ root.render(
 
           <Route path="/payslipelegant" element={<Payslipelegant />}></Route>
 
-          <Route path="/payslipmonthly" element={<Payslipmonthly />}></Route>
+          <Route
+            path="/payslipgenerator/payslipmonthly"
+            element={<Payslipmonthly />}></Route>
         </Route>
+        <Route path="/Mastterrol" element={<Mastterrol />}></Route>
+        <Route path="/Setup" element={<Setup />}></Route>
+        <Route path="/Setup2" element={<Setup2 />}></Route>
+        <Route path="/Shiftdetails007" element={<Shiftdetails007 />}></Route>
+        <Route
+          path="/Shiftpatterns0009"
+          element={<Shiftpatterns0009 />}></Route>
+        <Route path="/Leavesettlement" element={<Leavesettlement />}></Route>
       </Routes>
     </BrowserRouter>
   </Provider>
